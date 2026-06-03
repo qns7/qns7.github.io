@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Julian Kopf</title>
+
+  <!-- Fonts: a curated mix for the multi-font feature -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg:           #f5f0e8;
+      --bg-warm:      #ede8df;
+      --ink:          #2a2520;
+      --ink-muted:    #6b6055;
+      --orange:       #c8733a;
+      --orange-light: #d9915a;
+      --orange-pale:  #f0dcc8;
+      --green:        #5a7a52;
+      --green-light:  #7a9e70;
+      --green-pale:   #d4e4cf;
+      --rule:         #d0c8bc;
+      --nav-h:        54px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'Geist Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    /* ─── NAV ──────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2.5rem;
+      z-index: 100;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: 'Geist Mono', monospace;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      text-transform: lowercase;
+      text-decoration: none;
+      color: var(--ink-muted);
+      transition: color 0.15s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1px;
+      background: var(--orange);
+      transition: width 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ─── SECTIONS ─────────────────────────────────────────────── */
+    section {
+      min-height: 100vh;
+      padding: calc(var(--nav-h) + 5rem) 0 6rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 2.5rem;
+    }
+
+    .section-label {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--rule);
+      max-width: 80px;
+    }
+
+    /* ─── HOME ─────────────────────────────────────────────────── */
+    #home {
+      display: flex;
+      align-items: center;
+      background: var(--bg);
+    }
+
+    #home .container { padding-top: 2rem; }
+
+    .home-greeting {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 1.2rem;
+    }
+
+    .home-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .home-name em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .home-tagline {
+      font-family: 'Instrument Serif', serif;
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--ink-muted);
+      max-width: 480px;
+      line-height: 1.6;
+      margin-bottom: 3rem;
+    }
+
+    .home-meta {
+      font-family: 'Geist Mono', monospace;
+      font-size: 11px;
+      color: var(--ink-muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .home-meta span { opacity: 0.7; }
+    .home-meta span::before { content: '— '; color: var(--orange); }
+
+    /* decorative element */
+    .home-deco {
+      position: absolute;
+      right: 3rem;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 1px solid var(--rule);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .home-deco::before {
+      content: '';
+      position: absolute;
+      inset: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--green-light);
+      opacity: 0.5;
+    }
+
+    /* ─── MUSIC ─────────────────────────────────────────────────── */
+    #music { background: var(--bg); }
+
+    .music-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .music-title em {
+      font-style: italic;
+      color: var(--orange);
+    }
+
+    .music-body {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem;
+      line-height: 1.9;
+      color: var(--ink-muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: lowercase;
+      padding: 0.3rem 0.8rem;
+      border: 1px solid var(--rule);
+      color: var(--ink-muted);
+      border-radius: 2px;
+      background: transparent;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .tag:hover { border-color: var(--green); color: var(--green); }
+    .tag.orange:hover { border-color: var(--orange); color: var(--orange); }
+
+    /* placeholder card */
+    .placeholder-card {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      border: 1px dashed var(--rule);
+      border-radius: 2px;
+      color: var(--ink-muted);
+      font-family: 'Geist Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      text-align: center;
+      opacity: 0.6;
+    }
+
+    /* ─── POEMS ─────────────────────────────────────────────────── */
+    #poems { background: var(--bg-warm); }
+
+    .poems-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 600;
+      font-style: italic;
+      line-height: 1.05;
+      color: var(--ink);
+      margin-bottom: 1.8rem;
+    }
+
+    .poems-body {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem;
+      line-height: 2;
+      color: var(--ink-muted);
+      max-width: 480px;
+      margin-bottom: 2.5rem;
+    }
+
+    /* sample poem stub */
+    .poem-stub {
+      margin-top: 2rem;
+      padding-left: 1.5rem;
+      border-left: 2px solid var(--green-pale);
+    }
+
+    .poem-stub p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      line-height: 2;
+      color: var(--ink-muted);
+      opacity: 0.55;
+    }
+
+    .poem-stub .poem-author {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      margin-top: 0.8rem;
+      font-style: normal;
+      display: block;
+    }
+
+    /* ─── ROOM ──────────────────────────────────────────────────── */
+    #room { background: var(--bg); }
+
+    .room-title {
+      font-family: 'Space Mono', monospace;
+      font-size: clamp(2rem, 4.5vw, 3.8rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.15;
+    }
+
+    .room-title .accent { color: var(--orange); }
+
+    .room-body {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: var(--ink-muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .room-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--rule);
+      margin-top: 2.5rem;
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      opacity: 0.6;
+    }
+
+    .room-cell {
+      padding: 1.2rem 1rem;
+      border: 1px solid var(--rule);
+      text-align: center;
+      text-transform: lowercase;
+    }
+
+    /* ─── ACADEMIA ──────────────────────────────────────────────── */
+    #academia { background: var(--bg-warm); }
+
+    .academia-title {
+      font-family: 'Instrument Serif', serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .academia-title span {
+      display: block;
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .academia-body {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: var(--ink-muted);
+      max-width: 540px;
+      margin-bottom: 2.5rem;
+    }
+
+    .cite-block {
+      margin-top: 2rem;
+      padding: 1.5rem 2rem;
+      background: var(--green-pale);
+      border-left: 3px solid var(--green);
+      opacity: 0.75;
+    }
+
+    .cite-block p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem;
+      font-style: italic;
+      color: var(--ink);
+      line-height: 1.8;
+    }
+
+    .cite-source {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--green);
+      margin-top: 0.8rem;
+      display: block;
+    }
+
+    /* ─── RANOURNAL ─────────────────────────────────────────────── */
+    #ranournal { background: var(--bg); }
+
+    .ranournal-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.0;
+      color: var(--ink);
+      margin-bottom: 0.5rem;
+    }
+
+    .ranournal-sub {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 2rem;
+    }
+
+    .ranournal-body {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.1rem;
+      line-height: 1.85;
+      color: var(--ink-muted);
+      max-width: 500px;
+      margin-bottom: 2.5rem;
+    }
+
+    .entry-stub {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+    }
+
+    .entry-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0.5;
+    }
+
+    .entry-date {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      white-space: nowrap;
+      min-width: 80px;
+    }
+
+    .entry-title-text {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* ─── DISPATCHES ────────────────────────────────────────────── */
+    #dispatches { background: var(--bg-warm); }
+
+    .dispatches-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+    }
+
+    .dispatches-title em {
+      font-style: italic;
+      color: var(--green);
+    }
+
+    .dispatches-body {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.9rem;
+      line-height: 1.95;
+      color: var(--ink-muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .dispatch-list {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .dispatch-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      opacity: 0.6;
+    }
+
+    .dispatch-cat {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: lowercase;
+      color: var(--green);
+      min-width: 72px;
+    }
+
+    .dispatch-link {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* ─── FOOTER ────────────────────────────────────────────────── */
+    footer {
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid var(--rule);
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      color: var(--ink-muted);
+      opacity: 0.7;
+    }
+
+    footer a {
+      color: var(--ink-muted);
+      text-decoration: none;
+    }
+
+    footer a:hover { color: var(--orange); }
+
+    /* ─── SCROLL INDICATOR ──────────────────────────────────────── */
+    .scroll-dot {
+      position: fixed;
+      right: 2rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      z-index: 50;
+    }
+
+    .scroll-dot a {
+      display: block;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--rule);
+      transition: background 0.2s, transform 0.2s;
+    }
+
+    .scroll-dot a.active { background: var(--orange); transform: scale(1.4); }
+    .scroll-dot a:hover  { background: var(--green); }
+
+    /* ─── RESPONSIVE ────────────────────────────────────────────── */
+    @media (max-width: 600px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .container { padding: 0 1.2rem; }
+      .room-grid { grid-template-columns: 1fr 1fr; }
+      .scroll-dot { display: none; }
+      footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#home">home</a></li>
+      <li><a href="#music">music</a></li>
+      <li><a href="#poems">poems</a></li>
+      <li><a href="#room">room</a></li>
+      <li><a href="#academia">academia</a></li>
+      <li><a href="#ranournal">ranournal</a></li>
+      <li><a href="#dispatches">dispatches from elsewhere</a></li>
+    </ul>
+  </nav>
+
+  <!-- SCROLL DOTS -->
+  <div class="scroll-dot" id="scrollDots">
+    <a href="#home" title="home"></a>
+    <a href="#music" title="music"></a>
+    <a href="#poems" title="poems"></a>
+    <a href="#room" title="room"></a>
+    <a href="#academia" title="academia"></a>
+    <a href="#ranournal" title="ranournal"></a>
+    <a href="#dispatches" title="dispatches from elsewhere"></a>
+  </div>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="container" style="position:relative;">
+      <p class="home-greeting">welcome</p>
+      <h1 class="home-name">Julian<br><em>Kopf</em></h1>
+      <p class="home-tagline">
+        Mathematician, listener, reader, tinkerer.<br>
+        This is a place for the things I make and think about.
+      </p>
+      <div class="home-meta">
+        <span>south-west Germany</span>
+        <span>mathematics</span>
+        <span>music</span>
+        <span>words</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIC -->
+  <section id="music">
+    <div class="container">
+      <p class="section-label">01 — music</p>
+      <h2 class="music-title">Sound &amp;<br><em>Listening</em></h2>
+      <p class="music-body">
+        [ Your music writing, reviews, playlists, or thoughts go here. ]
+      </p>
+      <div class="placeholder-card">
+        ✦ &nbsp; content coming soon &nbsp; ✦
+      </div>
+    </div>
+  </section>
+
+  <!-- POEMS -->
+  <section id="poems">
+    <div class="container">
+      <p class="section-label">02 — poems</p>
+      <h2 class="poems-title">Poems</h2>
+      <p class="poems-body">
+        [ Your poems, favourite verses, or notes on poetry go here. ]
+      </p>
+      <div class="poem-stub">
+        <p>
+          the light fell sideways through the blinds<br>
+          and nothing moved, except the dust<br>
+          which moved the way that time does —<br>
+          mostly unobserved.
+        </p>
+        <span class="poem-author">— placeholder verse</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ROOM -->
+  <section id="room">
+    <div class="container">
+      <p class="section-label">03 — room</p>
+      <h2 class="room-title">The<br><span class="accent">Room</span></h2>
+      <p class="room-body">
+        [ Your space — gear, setup, objects, photos, or an essay about your room. ]
+      </p>
+      <div class="room-grid">
+        <div class="room-cell">desk</div>
+        <div class="room-cell">speakers</div>
+        <div class="room-cell">books</div>
+        <div class="room-cell">amp</div>
+        <div class="room-cell">light</div>
+        <div class="room-cell">cables</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACADEMIA -->
+  <section id="academia">
+    <div class="container">
+      <p class="section-label">04 — academia</p>
+      <h2 class="academia-title">
+        Mathematics
+        <span>&amp; Research</span>
+      </h2>
+      <p class="academia-body">
+        [ Thesis work, mathematical notes, papers, or thoughts on pure mathematics. ]
+      </p>
+      <div class="cite-block">
+        <p>
+          Let Q be an indefinite irrational quadratic form in n ≥ 3 variables.
+          Then Q(Z<sup>n</sup>) is dense in ℝ.
+        </p>
+        <span class="cite-source">— Oppenheim Conjecture (Margulis, 1987)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RANOURNAL -->
+  <section id="ranournal">
+    <div class="container">
+      <p class="section-label">05 — ranournal</p>
+      <h2 class="ranournal-title">Ranournal</h2>
+      <p class="ranournal-sub">random notes &amp; journal</p>
+      <p class="ranournal-body">
+        [ Fragments, observations, half-formed thoughts, and dated entries. Not a blog. Something looser. ]
+      </p>
+      <div class="entry-stub">
+        <div class="entry-row">
+          <span class="entry-date">2026-06-03</span>
+          <span class="entry-title-text">A note about nothing in particular</span>
+        </div>
+        <div class="entry-row">
+          <span class="entry-date">2026-05-18</span>
+          <span class="entry-title-text">Some thought I had while walking</span>
+        </div>
+        <div class="entry-row">
+          <span class="entry-date">2026-04-29</span>
+          <span class="entry-title-text">On the texture of certain afternoons</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DISPATCHES FROM ELSEWHERE -->
+  <section id="dispatches">
+    <div class="container">
+      <p class="section-label">06 — elsewhere</p>
+      <h2 class="dispatches-title">Dispatches<br><em>from Elsewhere</em></h2>
+      <p class="dispatches-body">
+        [ Links, recommendations, things worth reading, places worth visiting on the internet and off. ]
+      </p>
+      <div class="dispatch-list">
+        <div class="dispatch-row">
+          <span class="dispatch-cat">reading</span>
+          <span class="dispatch-link">— link or recommendation placeholder</span>
+        </div>
+        <div class="dispatch-row">
+          <span class="dispatch-cat">listening</span>
+          <span class="dispatch-link">— link or recommendation placeholder</span>
+        </div>
+        <div class="dispatch-row">
+          <span class="dispatch-cat">watching</span>
+          <span class="dispatch-link">— link or recommendation placeholder</span>
+        </div>
+        <div class="dispatch-row">
+          <span class="dispatch-cat">online</span>
+          <span class="dispatch-link">— link or recommendation placeholder</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>Julian Kopf</span>
+    <span>built by hand &nbsp;·&nbsp; <a href="mailto:">say hello</a></span>
+  </footer>
+
+  <script>
+    // Active dot tracking
+    const sections = ['home','music','poems','room','academia','ranournal','dispatches'];
+    const dots = document.querySelectorAll('.scroll-dot a');
+
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = sections.indexOf(e.target.id);
+          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        }
+      });
+    }, { threshold: 0.4 });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  </script>
+
+</body>
+</html>
