@@ -1,0 +1,671 @@
+:root {
+  --bg:           #f5f0e8;
+  --bg-warm:      #ede8df;
+  --ink:          #2a2520;
+  --ink-muted:    #6b6055;
+  --orange:       #c8733a;
+  --orange-light: #d9915a;
+  --orange-pale:  #f0dcc8;
+  --green:        #5a7a52;
+  --green-light:  #7a9e70;
+  --green-pale:   #d4e4cf;
+  --rule:         #d0c8bc;
+  --nav-h:        54px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Geist Mono', monospace;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ─── NAV ──────────────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  background: var(--bg);
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2.5rem;
+  z-index: 100;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Geist Mono', monospace;
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  text-decoration: none;
+  color: var(--ink-muted);
+  transition: color 0.15s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 1px;
+  background: var(--orange);
+  transition: width 0.2s;
+}
+
+.nav-links a:hover { color: var(--orange); }
+.nav-links a:hover::after { width: 100%; }
+
+/* ─── SECTIONS ─────────────────────────────────────────────── */
+section {
+  min-height: 100vh;
+  padding: calc(var(--nav-h) + 5rem) 0 6rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+section:last-child { border-bottom: none; }
+
+.container {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+}
+
+.section-label {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+  max-width: 80px;
+}
+
+/* ─── HOME ─────────────────────────────────────────────────── */
+#home {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+}
+
+#home .container { padding-top: 2rem; }
+
+.home-greeting {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.2rem;
+}
+
+.home-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.home-name em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.home-tagline {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  color: var(--ink-muted);
+  max-width: 480px;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+}
+
+.home-logo-placeholder {
+  font-family: 'Geist Mono', monospace;
+  font-size: 14px;
+  color: var(--ink-muted);
+  margin-bottom: 2rem;
+  padding: 3rem 0;
+  border: 1px dashed var(--rule);
+  text-align: center;
+}
+
+.home-meta-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--orange);
+}
+
+/* decorative element */
+.home-deco {
+  position: absolute;
+  right: 3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  border: 1px solid var(--rule);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.home-deco::before {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  border: 1px solid var(--green-light);
+  opacity: 0.5;
+}
+
+/* ─── MUSIC ─────────────────────────────────────────────────── */
+#music { background: var(--bg); }
+
+.music-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.music-title em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.music-body {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: lowercase;
+  padding: 0.3rem 0.8rem;
+  border: 1px solid var(--rule);
+  color: var(--ink-muted);
+  border-radius: 2px;
+  background: transparent;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.tag:hover { border-color: var(--green); color: var(--green); }
+.tag.orange:hover { border-color: var(--orange); color: var(--orange); }
+
+/* placeholder card */
+.placeholder-card {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  border: 1px dashed var(--rule);
+  border-radius: 2px;
+  color: var(--ink-muted);
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  text-align: center;
+  opacity: 0.6;
+}
+
+/* ─── WORDS ─────────────────────────────────────────────────── */
+#words { background: var(--bg-warm); }
+
+.poems-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.poems-ampersand {
+  color: var(--green);
+}
+
+.poems-ampersand em {
+  font-style: italic;
+}
+
+.poems-body {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  max-width: 480px;
+  margin-bottom: 2.5rem;
+}
+
+/* sample poem stub */
+.poem-stub {
+  margin-top: 2rem;
+  padding-left: 1.5rem;
+  border-left: 2px solid var(--green-pale);
+}
+
+.poem-stub p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 2;
+  color: var(--ink-muted);
+  opacity: 0.55;
+}
+
+.poem-stub .poem-author {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--green);
+  margin-top: 0.8rem;
+  font-style: normal;
+  display: block;
+}
+
+/* ─── ROOM ──────────────────────────────────────────────────── */
+#room { background: var(--bg-warm); }
+
+.room-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2rem, 4.5vw, 3.8rem);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.room-title .accent { color: var(--orange); }
+
+.room-detail {
+  font-style: italic;
+  color: var(--green);
+}
+
+.room-body {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+.room-list {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.room-item {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.room-item::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--green);
+}
+
+/* ─── ACADEMIA ──────────────────────────────────────────────── */
+#academia { background: var(--bg); }
+
+.academia-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.academia-title span {
+  display: block;
+  font-style: italic;
+  color: var(--orange);
+}
+
+.academia-body {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.9rem;
+  line-height: 1.95;
+  color: var(--ink-muted);
+  max-width: 540px;
+  margin-bottom: 2.5rem;
+}
+
+.cite-block {
+  margin-top: 2rem;
+  padding: 1.5rem 2rem;
+  background: var(--green-pale);
+  border-left: 3px solid var(--green);
+  opacity: 0.75;
+}
+
+.cite-block p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink);
+  line-height: 1.8;
+}
+
+.cite-source {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--green);
+  margin-top: 0.8rem;
+  display: block;
+}
+
+.media-post {
+  margin-top: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.media-meta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+
+.media-date {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  text-transform: lowercase;
+}
+
+.media-text {
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--ink);
+  max-width: 520px;
+}
+
+.pdf-preview {
+  margin-top: 2.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+  background: var(--bg);
+}
+
+.pdf-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fafafa;
+  padding: 2rem;
+  min-height: auto;
+}
+
+#pdfCanvas {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 1.5rem;
+  border-top: 1px solid var(--rule);
+  background: var(--bg);
+}
+
+.pdf-btn {
+  font-family: 'Geist Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+  transition: all 0.15s;
+  border-radius: 2px;
+}
+
+.pdf-btn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.pdf-btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.pdf-page-info {
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-muted);
+  white-space: nowrap;
+  min-width: 100px;
+  text-align: center;
+}
+
+/* ─── RANOURNAL ─────────────────────────────────────────────── */
+#ranournal { background: var(--bg-warm); }
+
+.ranournal-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1.0;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.ranournal-title em {
+  font-style: italic;
+  color: var(--green);
+}
+
+.ranournal-body {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--green);
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+
+.entry-stub {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.entry-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0.5;
+}
+
+.entry-date {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--orange);
+  white-space: nowrap;
+  min-width: 80px;
+}
+
+.entry-title-text {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* ─── DISPATCHES ────────────────────────────────────────────── */
+#dispatches { background: var(--bg); }
+
+.dispatches-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 1.5rem;
+}
+
+.dispatches-title em {
+  font-style: italic;
+  color: var(--orange);
+}
+
+.dispatches-body {
+  font-family: 'Geist Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  color: var(--orange);
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+}
+
+.dispatch-list {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.dispatch-row {
+  display: flex;
+  align-items: baseline;
+  gap: 1.2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+  opacity: 0.6;
+}
+
+.dispatch-cat {
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: lowercase;
+  color: var(--green);
+  min-width: 72px;
+}
+
+.dispatch-link {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1rem;
+  color: var(--ink);
+}
+
+/* ─── FOOTER ────────────────────────────────────────────────── */
+footer {
+  padding: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--rule);
+  font-family: 'Geist Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--ink-muted);
+  opacity: 0.7;
+}
+
+footer a {
+  color: var(--ink-muted);
+  text-decoration: none;
+}
+
+footer a:hover { color: var(--orange); }
+
+/* ─── SCROLL INDICATOR ──────────────────────────────────────── */
+.scroll-dot {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 50;
+}
+
+.scroll-dot a {
+  display: block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--rule);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.scroll-dot a.active { background: var(--orange); transform: scale(1.4); }
+.scroll-dot a:hover  { background: var(--green); }
+
+/* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  nav { padding: 0 1.2rem; }
+  .nav-links { gap: 1.2rem; }
+  .container { padding: 0 1.2rem; }
+  .room-grid { grid-template-columns: 1fr 1fr; }
+  .scroll-dot { display: none; }
+  footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+}
