@@ -10,6 +10,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet" />
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
   <style>
     :root {
       --bg:           #f5f0e8;
@@ -156,21 +158,27 @@
       color: var(--ink-muted);
       max-width: 480px;
       line-height: 1.6;
-      margin-bottom: 3rem;
+      margin-bottom: 2rem;
     }
 
-    .home-meta {
+    .home-logo-placeholder {
       font-family: 'Geist Mono', monospace;
-      font-size: 11px;
+      font-size: 14px;
       color: var(--ink-muted);
-      letter-spacing: 0.05em;
-      display: flex;
-      gap: 2rem;
-      flex-wrap: wrap;
+      margin-bottom: 2rem;
+      padding: 3rem 0;
+      border: 1px dashed var(--rule);
+      text-align: center;
     }
 
-    .home-meta span { opacity: 0.7; }
-    .home-meta span::before { content: '— '; color: var(--orange); }
+    .home-meta-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
 
     /* decorative element */
     .home-deco {
@@ -199,9 +207,9 @@
     #music { background: var(--bg); }
 
     .music-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
-      font-weight: 700;
+      font-weight: 400;
       line-height: 1.1;
       color: var(--ink);
       margin-bottom: 1.5rem;
@@ -261,13 +269,16 @@
     #poems { background: var(--bg-warm); }
 
     .poems-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 600;
-      font-style: italic;
+      font-weight: 400;
       line-height: 1.05;
       color: var(--ink);
       margin-bottom: 1.8rem;
+    }
+
+    .poems-ampersand {
+      color: var(--green);
     }
 
     .poems-body {
@@ -306,19 +317,23 @@
     }
 
     /* ─── ROOM ──────────────────────────────────────────────────── */
-    #room { background: var(--bg); }
+    #room { background: var(--bg-warm); }
 
     .room-title {
-      font-family: 'Space Mono', monospace;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(2rem, 4.5vw, 3.8rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
+      font-weight: 400;
+      line-height: 1.15;
       color: var(--ink);
       margin-bottom: 1.5rem;
-      line-height: 1.15;
     }
 
     .room-title .accent { color: var(--orange); }
+
+    .room-detail {
+      font-style: italic;
+      color: var(--green);
+    }
 
     .room-body {
       font-family: 'Libre Baskerville', serif;
@@ -329,28 +344,30 @@
       margin-bottom: 2.5rem;
     }
 
-    .room-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      border: 1px solid var(--rule);
-      margin-top: 2.5rem;
-      font-family: 'Geist Mono', monospace;
-      font-size: 10px;
-      letter-spacing: 0.05em;
-      color: var(--ink-muted);
-      opacity: 0.6;
+    .room-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
     }
 
-    .room-cell {
-      padding: 1.2rem 1rem;
-      border: 1px solid var(--rule);
-      text-align: center;
-      text-transform: lowercase;
+    .room-item {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1rem;
+      color: var(--ink);
+      padding-left: 1.5rem;
+      position: relative;
+    }
+
+    .room-item::before {
+      content: '—';
+      position: absolute;
+      left: 0;
+      color: var(--green);
     }
 
     /* ─── ACADEMIA ──────────────────────────────────────────────── */
-    #academia { background: var(--bg-warm); }
+    #academia { background: var(--bg); }
 
     .academia-title {
       font-family: 'Instrument Serif', serif;
@@ -364,7 +381,7 @@
     .academia-title span {
       display: block;
       font-style: italic;
-      color: var(--green);
+      color: var(--orange);
     }
 
     .academia-body {
@@ -401,14 +418,108 @@
       display: block;
     }
 
+    .media-post {
+      margin-top: 2.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .media-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    .media-date {
+      font-family: 'Geist Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--orange);
+      text-transform: lowercase;
+    }
+
+    .media-text {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem;
+      line-height: 1.8;
+      color: var(--ink);
+      max-width: 520px;
+    }
+
+    .pdf-preview {
+      margin-top: 2.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 2px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+
+    .pdf-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fafafa;
+      padding: 2rem;
+      min-height: auto;
+    }
+
+    #pdfCanvas {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .pdf-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+      padding: 1.5rem;
+      border-top: 1px solid var(--rule);
+      background: var(--bg);
+    }
+
+    .pdf-btn {
+      font-family: 'Geist Mono', monospace;
+      font-size: 12px;
+      letter-spacing: 0.05em;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--rule);
+      background: transparent;
+      color: var(--ink);
+      cursor: pointer;
+      transition: all 0.15s;
+      border-radius: 2px;
+    }
+
+    .pdf-btn:hover {
+      border-color: var(--green);
+      color: var(--green);
+    }
+
+    .pdf-btn:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .pdf-page-info {
+      font-family: 'Geist Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: var(--ink-muted);
+      white-space: nowrap;
+      min-width: 100px;
+      text-align: center;
+    }
+
     /* ─── RANOURNAL ─────────────────────────────────────────────── */
-    #ranournal { background: var(--bg); }
+    #ranournal { background: var(--bg-warm); }
 
     .ranournal-title {
-      font-family: 'Syne', sans-serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(2.5rem, 5.5vw, 4.5rem);
-      font-weight: 800;
-      letter-spacing: -0.04em;
+      font-weight: 400;
       line-height: 1.0;
       color: var(--ink);
       margin-bottom: 0.5rem;
@@ -419,7 +530,7 @@
       font-size: 10px;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--orange);
+      color: var(--green);
       margin-bottom: 2rem;
     }
 
@@ -464,10 +575,10 @@
     }
 
     /* ─── DISPATCHES ────────────────────────────────────────────── */
-    #dispatches { background: var(--bg-warm); }
+    #dispatches { background: var(--bg); }
 
     .dispatches-title {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Instrument Serif', serif;
       font-size: clamp(2.5rem, 5vw, 4rem);
       font-weight: 400;
       line-height: 1.1;
@@ -477,7 +588,7 @@
 
     .dispatches-title em {
       font-style: italic;
-      color: var(--green);
+      color: var(--orange);
     }
 
     .dispatches-body {
@@ -523,7 +634,7 @@
     footer {
       padding: 2.5rem;
       display: flex;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
       border-top: 1px solid var(--rule);
       font-family: 'Geist Mono', monospace;
@@ -581,21 +692,21 @@
   <nav>
     <ul class="nav-links">
       <li><a href="#home">home</a></li>
+      <li><a href="#room">room</a></li>
       <li><a href="#music">music</a></li>
       <li><a href="#poems">poems</a></li>
-      <li><a href="#room">room</a></li>
       <li><a href="#academia">academia</a></li>
       <li><a href="#ranournal">ranournal</a></li>
-      <li><a href="#dispatches">dispatches from elsewhere</a></li>
+      <li><a href="#dispatches">dispatches_from_elsewhere</a></li>
     </ul>
   </nav>
 
   <!-- SCROLL DOTS -->
   <div class="scroll-dot" id="scrollDots">
     <a href="#home" title="home"></a>
+    <a href="#room" title="room"></a>
     <a href="#music" title="music"></a>
     <a href="#poems" title="poems"></a>
-    <a href="#room" title="room"></a>
     <a href="#academia" title="academia"></a>
     <a href="#ranournal" title="ranournal"></a>
     <a href="#dispatches" title="dispatches from elsewhere"></a>
@@ -604,18 +715,40 @@
   <!-- HOME -->
   <section id="home">
     <div class="container" style="position:relative;">
-      <p class="home-greeting">welcome</p>
-      <h1 class="home-name">Julian<br><em>q(ns)</em><br>Kopf</h1>
+      <!-- <p class="home-greeting">welcome</p> -->
       <p class="home-tagline">
         <!-- mathematician <span style="position: relative; top: 0.3em;">*</span> reader <span style="position: relative; top: 0.3em;">*</span> t(h)inkerer <span style="position: relative; top: 0.3em;">*</span> listener ... human <br> -->
-        mathematician &middot; reader &middot; t(h)inkerer &middot; listener ... human <br>
         this is a place for the things I make and think about
       </p>
-      <div class="home-meta">
+      <div class="home-logo-placeholder">[ logo goes here ]</div>
+      <p class="home-meta-text">
+        mathematician &middot; reader &middot; t(h)inkerer &middot; listener ... human
+      </p>
+      <!-- <div class="home-meta">
         <span>Rhineland (Germany)</span>
         <span>Structures</span>
         <span>Frequencies</span>
         <span>Words</span>
+      </div> -->
+    </div>
+  </section>
+
+  <!-- ROOM -->
+  <section id="room">
+    <div class="container">
+      <p class="section-label">01 — room</p>
+      <h2 class="room-title">The Qorner<br><span class="room-detail"><em>&amp; andor LüRiGG</em></span></h2>
+      <p class="room-body">
+        <!-- [ Your space — gear, setup, objects, photos, or an essay about your room. ] -->
+        The Qorner : gear, desk- and audio-setup, objects, photos, (visual) art, and?
+      </p>
+      <div class="room-list">
+        <div class="room-item">desk</div>
+        <div class="room-item">speakers</div>
+        <div class="room-item">books</div>
+        <div class="room-item">amp</div>
+        <div class="room-item">light</div>
+        <div class="room-item">cables</div>
       </div>
     </div>
   </section>
@@ -623,7 +756,7 @@
   <!-- MUSIC -->
   <section id="music">
     <div class="container">
-      <p class="section-label">01 — music</p>
+      <p class="section-label">02 — music</p>
       <h2 class="music-title">Sound &amp;<br><em>Listening</em></h2>
       <p class="music-body">
         <!-- [ Your music writing, reviews, playlists, or thoughts go here. ] -->
@@ -638,8 +771,8 @@
   <!-- POEMS -->
   <section id="poems">
     <div class="container">
-      <p class="section-label">02 — poems</p>
-      <h2 class="poems-title">Poems</h2>
+      <p class="section-label">03 — poems</p>
+      <h2 class="poems-title">Poems<br><span class="poems-ampersand">&amp; ...</span></h2>
       <p class="poems-body">
         <!-- [ Your poems, favourite verses, or notes on poetry go here. ] -->
         .. some of my Gedichte
@@ -652,26 +785,6 @@
           mostly unobserved.
         </p>
         <span class="poem-author">— placeholder verse</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ROOM -->
-  <section id="room">
-    <div class="container">
-      <p class="section-label">03 — room</p>
-      <h2 class="room-title">The<br><span class="accent">Room</span></h2>
-      <p class="room-body">
-        <!-- [ Your space — gear, setup, objects, photos, or an essay about your room. ] -->
-        The Qorner : gear, desk- and audio-setup, objects, photos, (visual) art, and?
-      </p>
-      <div class="room-grid">
-        <div class="room-cell">desk</div>
-        <div class="room-cell">speakers</div>
-        <div class="room-cell">books</div>
-        <div class="room-cell">amp</div>
-        <div class="room-cell">light</div>
-        <div class="room-cell">cables</div>
       </div>
     </div>
   </section>
@@ -693,6 +806,26 @@
           Then Q(Z<sup>n</sup>) is dense in ℝ.
         </p>
         <span class="cite-source">— Oppenheim Conjecture (Margulis, 1987)</span>
+      </div>
+      <div class="media-post">
+        <div class="media-meta">
+          <span class="media-date">2026-06-04</span>
+        </div>
+        <p class="media-text">
+          This is the CV I use for my recent applications.
+        </p>
+      </div>
+      <div class="pdf-preview">
+        <div class="pdf-container">
+          <canvas id="pdfCanvas"></canvas>
+        </div>
+        <div class="pdf-controls">
+          <button id="pdfPrev" class="pdf-btn">← prev</button>
+          <span class="pdf-page-info">
+            page <span id="currentPage">1</span> of <span id="totalPages">?</span>
+          </span>
+          <button id="pdfNext" class="pdf-btn">next →</button>
+        </div>
       </div>
     </div>
   </section>
@@ -754,13 +887,12 @@
 
   <!-- FOOTER -->
   <footer>
-    <span>Julian Kopf</span>
     <span>built by hand &nbsp;·&nbsp; <a href="mailto:">say hello</a></span>
   </footer>
 
   <script>
     // Active dot tracking
-    const sections = ['home','music','poems','room','academia','ranournal','dispatches'];
+    const sections = ['home','room','music','poems','academia','ranournal','dispatches'];
     const dots = document.querySelectorAll('.scroll-dot a');
 
     const obs = new IntersectionObserver((entries) => {
@@ -775,6 +907,73 @@
     sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) obs.observe(el);
+    });
+
+    // PDF Viewer
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    let pdfDoc = null;
+    let currentPageNum = 1;
+
+    const canvas = document.getElementById('pdfCanvas');
+    const ctx = canvas.getContext('2d');
+    const prevBtn = document.getElementById('pdfPrev');
+    const nextBtn = document.getElementById('pdfNext');
+    const currentPageSpan = document.getElementById('currentPage');
+    const totalPagesSpan = document.getElementById('totalPages');
+
+    function renderPage(pageNum) {
+      pdfDoc.getPage(pageNum).then(page => {
+        // Get the container width (760px max-width of .container)
+        const containerWidth = Math.min(window.innerWidth - 40, 760); // accounting for padding
+
+        // Initial viewport to get page dimensions
+        const initialViewport = page.getViewport({ scale: 1 });
+
+        // Calculate scale to fit container width
+        const scale = containerWidth / initialViewport.width;
+        const viewport = page.getViewport({ scale: scale });
+
+        canvas.width = viewport.width;
+        canvas.height = viewport.height;
+
+        const renderContext = {
+          canvasContext: ctx,
+          viewport: viewport
+        };
+
+        page.render(renderContext);
+        currentPageSpan.textContent = pageNum;
+        updateButtonStates();
+      });
+    }
+
+    function updateButtonStates() {
+      prevBtn.disabled = currentPageNum <= 1;
+      nextBtn.disabled = currentPageNum >= pdfDoc.numPages;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentPageNum > 1) {
+        currentPageNum--;
+        renderPage(currentPageNum);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPageNum < pdfDoc.numPages) {
+        currentPageNum++;
+        renderPage(currentPageNum);
+      }
+    });
+
+    // Load PDF
+    pdfjsLib.getDocument('cv_Q2-26.pdf').promise.then(doc => {
+      pdfDoc = doc;
+      totalPagesSpan.textContent = doc.numPages;
+      renderPage(currentPageNum);
+    }).catch(err => {
+      console.log('PDF loading error:', err);
     });
   </script>
 
