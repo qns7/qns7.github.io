@@ -79,7 +79,7 @@ section {
 section:last-child { border-bottom: none; }
 
 .container {
-  max-width: 760px;
+  max-width: 800px;
   margin: 0 auto;
   padding: 0 2.5rem;
 }
@@ -206,11 +206,11 @@ section:last-child { border-bottom: none; }
 }
 
 .music-body {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--orange);
-  max-width: 520px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
@@ -271,11 +271,11 @@ section:last-child { border-bottom: none; }
 }
 
 .poems-body {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--green);
-  max-width: 480px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
@@ -325,11 +325,11 @@ section:last-child { border-bottom: none; }
 }
 
 .room-body {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--green);
-  max-width: 520px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
@@ -374,11 +374,11 @@ section:last-child { border-bottom: none; }
 }
 
 .academia-body {
-  font-family: 'Libre Baskerville', serif;
-  font-size: 0.9rem;
-  line-height: 1.95;
-  color: var(--ink-muted);
-  max-width: 540px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
@@ -412,6 +412,33 @@ section:last-child { border-bottom: none; }
   margin-bottom: 1.5rem;
 }
 
+.media-post:not(:first-of-type) {
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--rule);
+  position: relative;
+}
+
+.media-post:not(:first-of-type)::before {
+  content: '◆';
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--orange);
+  font-size: 1.2rem;
+  background: var(--bg);
+  padding: 0 0.6rem;
+  line-height: 1;
+}
+
+#academia .media-post:not(:first-of-type)::before {
+  background: var(--bg);
+}
+
+#words .media-post:not(:first-of-type)::before {
+  background: var(--bg-warm);
+}
+
 .media-meta {
   display: flex;
   gap: 1rem;
@@ -432,7 +459,6 @@ section:last-child { border-bottom: none; }
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--ink);
-  max-width: 520px;
 }
 
 .pdf-preview {
@@ -520,11 +546,11 @@ section:last-child { border-bottom: none; }
 }
 
 .ranournal-body {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--green);
-  max-width: 500px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
@@ -577,11 +603,11 @@ section:last-child { border-bottom: none; }
 }
 
 .dispatches-body {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  color: var(--orange);
-  max-width: 520px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
   margin-bottom: 2.5rem;
 }
 
