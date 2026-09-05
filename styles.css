@@ -697,7 +697,14 @@ footer a:hover { color: var(--orange); }
 }
 
 /* 22:25, 05.09.26, SAT */
+.tagline-wrap {
+  text-align: center;
+}
+
 .tagline {
-  font-family: 'Space Mono', monospace;
+  display: inline-block;
+  text-align: left;
   white-space: pre;
+  font-family: 'Space Mono', monospace;
+  font-size: calc(1em + 2pt);
 }
