@@ -706,5 +706,5 @@ footer a:hover { color: var(--orange); }
   text-align: left;
   white-space: pre;
   font-family: 'Space Mono', monospace;
-  font-size: calc(1em);
+  font-size: 1em;
 }
