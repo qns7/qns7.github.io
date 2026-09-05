@@ -695,3 +695,9 @@ footer a:hover { color: var(--orange); }
   .scroll-dot { display: none; }
   footer { flex-direction: column; gap: 0.5rem; text-align: center; }
 }
+
+/* 22:25, 05.09.26, SAT */
+.tagline {
+  font-family: 'Space Mono', monospace;
+  white-space: pre;
+}
