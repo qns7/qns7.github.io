@@ -704,7 +704,15 @@ footer a:hover { color: var(--orange); }
 .tagline {
   display: inline-block;
   text-align: left;
-  white-space: pre;
   font-family: 'Space Mono', monospace;
   font-size: 12pt;
+}
+
+.tagline-line {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.tagline-indent {
+  padding-left: 21ch;
 }
