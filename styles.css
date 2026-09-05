@@ -141,8 +141,7 @@ section:last-child { border-bottom: none; }
   font-family: 'Instrument Serif', serif;
   font-size: 1.25rem;
   color: var(--ink-muted);
-  width: 480px;       /* was: max-width: 480px */
-  flex-shrink: 0;      /* prevents flex from squeezing it back down */
+  max-width: 480px;
   line-height: 1.6;
   margin-bottom: 2rem;
 }
