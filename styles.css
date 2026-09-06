@@ -700,13 +700,18 @@ footer a:hover { color: var(--orange); }
 /* 22:25, 05.09.26, SAT */
 .tagline-wrap {
   text-align: center;
-}
-
-.tagline {
   font-family: 'Geist Mono', monospace;
   font-size: 13px;
   font-weight: 400;
   letter-spacing: 0.06em;
+}
+
+.tagline {
+  font-family: 'Instrument Serif', serif;
+  font-size: 1.25rem;
+  color: var(--ink-muted);
+  font-weight: 400;
+  letter-spacing: normal;
 }
 
 .tagline-line {
