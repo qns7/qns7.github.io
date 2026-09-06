@@ -712,7 +712,6 @@ footer a:hover { color: var(--orange); }
   color: var(--ink-muted);
   font-weight: 400;
   letter-spacing: normal;
-  padding-left: 12ch;
   display: inline-block;
 }
 
@@ -722,5 +721,5 @@ footer a:hover { color: var(--orange); }
 }
 
 .tagline-indent {
-  padding-left: 0;
+  padding-left: 25ch;
 }
