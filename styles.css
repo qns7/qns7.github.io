@@ -698,29 +698,30 @@ footer a:hover { color: var(--orange); }
 }
 
 /* 22:25, 05.09.26, SAT */
+/* 22:25, 05.09.26, SAT */
 .tagline-wrap {
   text-align: center;
-  font-family: 'Geist Mono', monospace;
-  font-size: 13px;
-  font-weight: 400;
-  letter-spacing: 0.06em;
 }
 
 .tagline {
+  display: inline-grid;
+  grid-template-columns: max-content max-content;
   font-family: 'Instrument Serif', serif;
   font-size: 1.25rem;
   color: var(--ink-muted);
-  font-weight: 400;
-  letter-spacing: normal;
-  display: inline-block;
-  padding-left: 8.7rem;
 }
 
-.tagline-line {
-  display: inline-block;
+.tagline-row {
+  display: contents;
+}
+
+.tagline-prefix {
+  grid-column: 1;
+  text-align: right;
+}
+
+.tagline-suffix {
+  grid-column: 2;
+  text-align: left;
   white-space: nowrap;
-}
-
-.tagline-indent {
-  padding-left: 0;
 }
