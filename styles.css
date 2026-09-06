@@ -111,7 +111,9 @@ section:last-child { border-bottom: none; }
   background: var(--bg);
 }
 
-#home .container { padding-top: 2rem; }
+#home .container {
+  transform: translateY(-5rem); /* the only value you'll tune */
+}
 
 .home-greeting {
   font-family: 'Cormorant Garamond', serif;
@@ -146,7 +148,7 @@ section:last-child { border-bottom: none; }
   margin-bottom: 2rem;
 }
 
-.home-logo-placeholder {
+/* .home-logo-placeholder {
   font-family: 'Geist Mono', monospace;
   font-size: 14px;
   color: var(--ink-muted);
@@ -154,15 +156,24 @@ section:last-child { border-bottom: none; }
   padding: 3rem 0;
   border: 1px dashed var(--rule);
   text-align: center;
+} */
+.home-logo-placeholder {
+  border: none;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
 }
 
 .home-meta-text {
   font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: 13px;
-  letter-spacing: 0.15em;
+  font-weight: 400;
+  font-size: 17px;
+  letter-spacing: 0.037em;
   text-transform: uppercase;
   color: var(--orange);
+  text-align: center;
 }
 
 /* decorative element */
@@ -724,4 +735,13 @@ footer a:hover { color: var(--orange); }
   grid-column: 2;
   text-align: left;
   white-space: nowrap;
+}
+
+/* ─── LOGO ────────────────────────────────────────────── */
+
+.home-logo {
+  width: 500px;
+  height: 500px;
+  margin: -1.37rem 0 -2em 2rem;
+  object-fit: contain;
 }
