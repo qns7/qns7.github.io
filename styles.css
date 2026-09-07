@@ -146,6 +146,8 @@ section:last-child { border-bottom: none; }
   max-width: 480px;
   line-height: 1.6;
   margin-bottom: 2rem;
+  text-align: center;
+  margin: 0rem 0rem 0rem 1.5rem;
 }
 
 /* .home-logo-placeholder {
@@ -728,6 +730,7 @@ footer a:hover { color: var(--orange); }
   font-family: 'Instrument Serif', serif;
   font-size: 1.25rem;
   color: var(--ink-muted);
+  margin: 0rem 0rem 0rem 0rem;
 }
 
 .tagline-row {
@@ -750,6 +753,6 @@ footer a:hover { color: var(--orange); }
 .home-logo {
   width: 500px;
   height: 500px;
-  margin: -1.37rem 0 -2em 2rem;
+  margin: -0.73rem 0rem -1.3rem 1rem;
   object-fit: contain;
 }
