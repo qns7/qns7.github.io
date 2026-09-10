@@ -101,7 +101,7 @@ section:last-child { border-bottom: none; }
   flex: 1;
   height: 1px;
   background: var(--rule);
-  max-width: 80px;
+  /* max-width: 80px; */
 }
 
 /* ─── HOME ─────────────────────────────────────────────────── */
@@ -112,7 +112,7 @@ section:last-child { border-bottom: none; }
 }
 
 #home .container {
-  transform: translateY(-5rem); /* the only value you'll tune */
+  transform: translateY(0); /* back to 0 from -5rem ; the only value you'll tune */
 }
 
 .home-greeting {
