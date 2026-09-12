@@ -358,6 +358,17 @@ section:last-child { border-bottom: none; }
   margin-top: 1.5rem;
 }
 
+.media-post-image {
+  margin: 1rem 0 1.5rem;
+}
+
+.media-post-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+}
+
 .external-post-meta {
   display: flex;
   flex-wrap: wrap;
