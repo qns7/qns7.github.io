@@ -358,6 +358,14 @@ section:last-child { border-bottom: none; }
   margin-top: 1.5rem;
 }
 
+#room .external-post {
+  background: var(--bg);
+}
+
+#music .external-post {
+  background: var(--bg-warm);
+}
+
 .media-post-image {
   margin: 1rem 0 1.5rem;
 }
@@ -551,6 +559,20 @@ section:last-child { border-bottom: none; }
   font-size: 0.95rem;
   line-height: 1.8;
   color: var(--ink);
+}
+
+.media-reminder-list {
+  margin: 1rem 0 0;
+  padding-left: 1.2rem;
+  font-family: 'Geist Mono', monospace;
+  font-size: 11px;
+  line-height: 1.8;
+  color: var(--ink-muted);
+}
+
+.media-reminder-list strong {
+  color: var(--orange);
+  font-weight: 500;
 }
 
 .pdf-preview {
