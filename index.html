@@ -14,31 +14,20 @@
 
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body class="home-page">
 
   <!-- NAV -->
   <nav>
     <ul class="nav-links">
       <li><a href="#home">home</a></li>
-      <li><a href="#room">room</a></li>
-      <li><a href="#music">music</a></li>
-      <li><a href="#words">words</a></li>
-      <li><a href="#academia">academia</a></li>
-      <li><a href="#ranournal">ranournal</a></li>
-      <li><a href="#dispatches">dispatches_from_elsewhere</a></li>
+      <li><a href="room.html">room</a></li>
+        <li><a href="music.html">music</a></li>
+        <li><a href="words.html">words</a></li>
+        <li><a href="academia.html">academia</a></li>
+        <li><a href="ranournal.html">ranournal</a></li>
+        <li><a href="dispatches.html">dispatches_from_elsewhere</a></li>
     </ul>
   </nav>
-
-  <!-- SCROLL DOTS -->
-  <div class="scroll-dot" id="scrollDots">
-    <a href="#home" title="home"></a>
-    <a href="#room" title="room"></a>
-    <a href="#music" title="music"></a>
-    <a href="#words" title="words"></a>
-    <a href="#academia" title="academia"></a>
-    <a href="#ranournal" title="ranournal"></a>
-    <a href="#dispatches" title="dispatches from elsewhere"></a>
-  </div>
 
   <!-- HOME -->
 <section id="home">
@@ -75,7 +64,6 @@
   <!-- ROOM -->
   <section id="room">
     <div class="container">
-      <p class="section-label">01 — room</p>
       <h2 class="room-title">The<br><span class="room-detail"><em> Qorner</em></span></h2>
       <p class="room-body">
         Gear, desk- and audio-setup, objects, photos, (visual) art, and more from "A Room of Qns’ Own".
@@ -93,6 +81,9 @@
           <li><span>WITH SYNCHRONISED TREMOLO</span> &rarr; <strong>MADE IN GERMANY BY QNS</strong></li>
           <li><span>ORIGINAL Contour Body</span> &rarr; <strong>EVOLVING since 2018</strong></li>
         </ul>
+        <p class="media-text"> </br>
+        Perhaps move this entry to "music". 
+        </p>
       </div>
       <div class="media-post">
         <div class="media-meta">
@@ -179,7 +170,6 @@
   <!-- MUSIC -->
   <section id="music">
     <div class="container">
-      <p class="section-label">02 — music</p>
       <h2 class="music-title">Sound &amp;<br><em>Listening</em></h2>
       <p class="music-body">
         Music writing, recs², or thoughts about music have a home in here.
@@ -192,7 +182,7 @@
           <img src="gaugemod.jpeg" alt="Modified nut slotting gauge with marked internal components">
         </figure>
         <p class="media-text">
-          A discussion of the infamous nut slotting gauge, and how I made mine useful for measuring relief and string action.
+          A discussion of the infamous nut slotting gauge, and how I made mine useful for measuring relief and string action. I think it fits into this section of the Qorner, it's a maintenance tool and not "room specific gear" per se.. I guess..
         </p>
         <article class="external-post reddit-post">
           <div class="external-post-meta">
@@ -255,7 +245,6 @@
   <!-- WORDS -->
   <section id="words">
     <div class="container">
-      <p class="section-label">03 — words</p>
       <h2 class="poems-title">Poems<br><span class="poems-ampersand"><em>andor LüRiGG</em></span></h2>
       <p class="poems-body">
         Some of my Gedichte.
@@ -269,7 +258,6 @@
   <!-- ACADEMIA -->
   <section id="academia">
     <div class="container">
-      <p class="section-label">04 — academia</p>
       <h2 class="academia-title">
         The Science of<br>
         <span>Structures &amp; Patterns</span>
@@ -330,7 +318,6 @@ What one learns while being at university, too, implicitly, is to highten their 
   <!-- RANOURNAL -->
   <section id="ranournal">
     <div class="container">
-      <p class="section-label">05 — ranournal</p>
       <h2 class="ranournal-title">Ranournal</h2>
       <p class="ranournal-body">
         RAndom NOtes &amp; joURNAL : Fragments, observations, half-formed thoughts, and dated entries. Not a blog. Something looser.
@@ -349,7 +336,6 @@ What one learns while being at university, too, implicitly, is to highten their 
   <!-- DISPATCHES FROM ELSEWHERE -->
   <section id="dispatches">
     <div class="container">
-      <p class="section-label">06 — elsewhere</p>
       <h2 class="dispatches-title">Dispatches<br><em>from Elsewhere</em></h2>
       <p class="dispatches-body">
         Links, recommendations, things worth reading, places worth visiting on the internet and off.
@@ -376,24 +362,6 @@ What one learns while being at university, too, implicitly, is to highten their 
   </footer>
 
   <script>
-    // Active dot tracking
-    const sections = ['home','room','music','words','academia','ranournal','dispatches'];
-    const dots = document.querySelectorAll('.scroll-dot a');
-
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          const idx = sections.indexOf(e.target.id);
-          dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        }
-      });
-    }, { threshold: 0.4 });
-
-    sections.forEach(id => {
-      const el = document.getElementById(id);
-      if (el) obs.observe(el);
-    });
-
     // PDF Viewer
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 

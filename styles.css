@@ -1,6 +1,7 @@
 :root {
   --bg:           #f5f0e8;
   --bg-warm:      #ede8df;
+  --bg-chrome:    #e8e2d9;
   --ink:          #2a2520;
   --ink-muted:    #6b6055;
   --orange:       #c8733a;
@@ -15,7 +16,10 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-html { scroll-behavior: smooth; }
+html {
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
 
 body {
   background: var(--bg);
@@ -30,7 +34,7 @@ nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--nav-h);
-  background: var(--bg-warm);
+  background: var(--bg-chrome);
   border-bottom: 1px solid var(--rule);
   display: flex;
   align-items: center;
@@ -47,8 +51,8 @@ nav {
 
 .nav-links a {
   font-family: 'Geist Mono', monospace;
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: lowercase;
   text-decoration: none;
@@ -82,26 +86,6 @@ section:last-child { border-bottom: none; }
   max-width: 800px;
   margin: 0 auto;
   padding: 0 2.5rem;
-}
-
-.section-label {
-  font-family: 'Geist Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--orange);
-  margin-bottom: 2rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.section-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-  /* max-width: 80px; */
 }
 
 /* ─── HOME ─────────────────────────────────────────────────── */
@@ -264,7 +248,7 @@ section:last-child { border-bottom: none; }
 }
 
 /* ─── WORDS ─────────────────────────────────────────────────── */
-#words { background: var(--bg-warm); }
+#words { background: var(--bg); }
 
 .poems-title {
   font-family: 'Instrument Serif', serif;
@@ -319,7 +303,7 @@ section:last-child { border-bottom: none; }
 }
 
 /* ─── ROOM ──────────────────────────────────────────────────── */
-#room { background: var(--bg-warm); }
+#room { background: var(--bg); }
 
 .room-title {
   font-family: 'Instrument Serif', serif;
@@ -362,14 +346,6 @@ section .academia-body + .media-post {
 
 .media-post > .external-post {
   margin-top: 1.5rem;
-}
-
-#room .external-post {
-  background: var(--bg);
-}
-
-#music .external-post {
-  background: var(--bg-warm);
 }
 
 .media-post-image {
@@ -666,7 +642,7 @@ section .academia-body + .media-post {
 }
 
 /* ─── RANOURNAL ─────────────────────────────────────────────── */
-#ranournal { background: var(--bg-warm); }
+#ranournal { background: var(--bg); }
 
 .ranournal-title {
   font-family: 'Instrument Serif', serif;
@@ -771,7 +747,7 @@ footer {
   letter-spacing: 0.08em;
   color: var(--ink-muted);
   opacity: 0.7;
-  background: var(--bg-warm);
+  background: var(--bg-chrome);
 }
 
 footer a {
@@ -805,7 +781,66 @@ footer a:hover { color: var(--orange); }
 .scroll-dot a.active { background: var(--orange); transform: scale(1.4); }
 .scroll-dot a:hover  { background: var(--green); }
 
+.home-page > section:not(#home),
+.home-page > footer {
+  display: none;
+}
+
+.section-page {
+  min-height: 100vh;
+  padding-top: 0;
+}
+
+.section-page main {
+  visibility: hidden;
+}
+
+.section-page.section-loaded main {
+  visibility: visible;
+}
+
+.section-page .section-progress {
+  position: fixed;
+  right: 2.5rem;
+  top: 50%;
+  width: 7px;
+  height: 370px;
+  transform: translateY(-50%);
+  display: block;
+  background: var(--green-pale);
+  z-index: 50;
+}
+
+.section-page .section-progress i {
+  display: block;
+  width: 100%;
+  height: 0;
+  background: var(--green);
+  transition: height 0.15s ease-out;
+}
+
+.section-page .container {
+  padding-bottom: 6rem;
+}
+
+.section-page .nav-links a[href$=".html"] {
+  color: var(--ink-muted);
+}
+
+.section-page.room-page .nav-links a[href="room.html"],
+.section-page.music-page .nav-links a[href="music.html"],
+.section-page.words-page .nav-links a[href="words.html"],
+.section-page.academia-page .nav-links a[href="academia.html"],
+.section-page.ranournal-page .nav-links a[href="ranournal.html"],
+.section-page.dispatches-page .nav-links a[href="dispatches.html"] {
+  color: var(--orange);
+}
+
 /* ─── RESPONSIVE ────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .section-page .section-progress { display: none; }
+}
+
 @media (max-width: 600px) {
   nav { padding: 0 1.2rem; }
   .nav-links { gap: 1.2rem; }
