@@ -66,9 +66,17 @@
     <div class="container">
       <h2 class="room-title">The<br><span class="room-detail"><em> Qorner</em></span></h2>
       <p class="room-body">
-        Gear, desk- and audio-setup, objects, photos, (visual) art, and more from "A Room of Qns’ Own".
+        "General gear", desk- and audio-setup, objects, photos, (visual) art, and more from "A Study<s>Room</s> of Qns’ Own".
       </p>
       <div class="media-post">
+        <div class="media-meta">
+          <span class="media-date">2026-09-14</span>
+        </div>
+        <p class="media-text">
+          Note to myself: Write a complete report about my macOS setup and, ideally, overhaul the complete README and documentation of the accompanying <a href="https://github.com/qns7/macOS.qotfiles" target="_blank" rel="noopener noreferrer">GitHub repository</a> as well.
+        </p>
+      </div>
+      <div class="media-post" id="strat-post">
         <div class="media-meta">
           <span class="media-date">2026-09-12</span>
         </div>
@@ -81,11 +89,11 @@
           <li><span>WITH SYNCHRONISED TREMOLO</span> &rarr; <strong>MADE IN GERMANY BY QNS</strong></li>
           <li><span>ORIGINAL Contour Body</span> &rarr; <strong>EVOLVING since 2018</strong></li>
         </ul>
-        <p class="media-text"> </br>
-        Perhaps move this entry to "music". 
+        <p class="media-text">
+        <s>Perhaps move this entry to "music".</s>
         </p>
       </div>
-      <div class="media-post">
+      <div class="media-post" id="amp-post">
         <div class="media-meta">
           <span class="media-date">2026-09-11</span>
         </div>
@@ -109,46 +117,56 @@
 
           <h4>Input</h4>
           <ul>
-            <li>Made the two channels "jumpable" with an S/DPDT switch, allowing both channels and their input components to be used together.</li>
-            <li>Removed the series input resistor on the normal channel (R1), changed its bright cap from 120pF to 94pF, and made it switchable.</li>
+            <li>Made the two channels "jumpable", but a bit different than how they did it in the CCs: I modified the Input-Board to don't short out the tip when nothing is connected to then use an S/DPDT switch to bridge the channels directly at the tip. This way both channels can be bridged with the significant other and all the caps, ferrites and stuff of both lanes are used; the old CCs basically bridged after the Input-Board and therefore ignored the components before that while also making the jumping-feature only available on the Top-Boost-Input. I also permanently attached the Sleeves of both Jacks to the Chassis-Ground and added a common ferrite I had spare to the cable from the Input-Board to the main-PCB.</li>
+            <li>I removed the series input resistor on the normal channel (R1) and of course shorted the two empty holes (0R); and changed the bright cap of the normal channel form 120pF to 94pF, while making it switchable (w/ SPDT). Reason: When using both channels I only want one bright cap in the circuit and the one in the Top Boost Channel sounds good and better than the Normal Channel one to begin with; while I still want the Normal's bright cap available for times I wanna use the Normal channel on it's own in lower volume settings (e.g. Jazz Duo). I just changed it to better quality caps and with a slightly lower value to get a slightly more subtle effect.</li>
           </ul>
           <h4>Reverb</h4>
           <ul>
             <li>Changed the stock tank (Belton BS3EB3C1B) to an Accutronics 8EB2C1B and then to a TAD 4EB2C1B.</li>
-            <li>Wired a new shielded RCA cable directly to the PCB connectors and added a classic tone control.</li>
-            <li>Changed R24 from 820k to 330k + B500k to alter the reverb, gain, volume, and noise characteristics.</li>
+            <li>Removed the "RCA-Chassis-Terminal" and wired a new and better quality, shielded RCA cable directly to the 3-Pin-PCB-Connectors.</li>
+            <li>Added a classic Tone Control (2nF+B50k) between the Tank-Return and the PCB.</li>
+            <li>Changed R24 (Pre-Gain / Dwell / Decay) from 820k to 330k+B500k. This resistor doesn't only change the Reverb in different ways it also has an effect on the overall Gain, Volume and Noise of the Amp even if the Reverb is turned off. Looking at the schematic makes this behavior pretty obvious and I'm happy with what can be manipulated this way / with this new pot.</li>
           </ul>
           <h4>Tone Stack</h4>
           <ul>
-            <li>Changed C20 and C24 to better-quality capacitors with the same values.</li>
-            <li>Added a switchable mids control by changing R32 from 10k to B25k.</li>
+            <li>Changed the capacitors C20 and C24 to better quality ones with the same value: a "Double Sided Box Type Met Polypropylene Film Capacitor - JFQD" in C24 and a DME one in C20. I believe it made the highs a bit more "hifi".</li>
+            <li>Added a Mids Control: Changed R32 from 10k to B25k; and made that switchable (SPDT: stock (10k) or the new B25k).</li>
           </ul>
           <h4>Fixed Issues of Later Revisions</h4>
           <ul>
             <li>Grounded the second unused side of U5 (ISS6).</li>
-            <li>Added two caps to V1, presumably for noise reduction (ISS7).</li>
+            <li>Added two caps to V1, presumably for noise-reduction purposes (ISS7).</li>
           </ul>
           <h4>Upgrades and Repairs</h4>
           <ul>
-            <li>Changed the screen grid resistors from 470R 1/2W to 1k 2W and elevated them from the PCB.</li>
-            <li>Changed R90 and R91 to higher-wattage resistor arrays and elevated them from the PCB.</li>
-            <li>Changed R79, the cathode bias resistor, from 120R 5W to 143R using seven 1k 2W modern metal-oxide resistors.</li>
-            <li>After measuring before and after, I landed at about 12W plate dissipation per tube and the amp sounds pretty much the same.</li>
+            <li>Changed the Screen Grid Resistors from 470R 1/2W to 1k 2W and elevated them from the PCB (cf. Lyle/Psionic).</li>
+            <li>Changed R90 and R91 from 220k 1/4W to 227k(3x680) 3/4W(3x1/4W) and also elevated them from the PCB (saw many of them burned in other units over the years).</li>
+            <li>Changed R79 (cathode bias resistor) from 120R 5W (cement-block-style) to 143R(7x1k) 14W(7x2W) (modern metal-oxide, the same as I used for the Screen Grid Resistors) (cf. Lyle/Psionic). Measurements before and after will follow: ... Lyle/Psionic recommended to me <a href="https://robrobinette.com/Tube_Bias_Calculator.htm" target="_blank" rel="noopener noreferrer">https://robrobinette.com/Tube_Bias_Calculator.htm</a> which I used to find out my plate dissipation per tube. I measured the cathode voltage (10.87VDC before, 12.30VDC after), plate voltage (330VDC before, 340VDC after), and the used resistor (120R before, 143R after) and got for the plate dissipation per tube: 13,7W before and 13,3W after (I have 230VAC wall voltage) The "cooling-down" is minimal but I hope at least somewhat beneficial. Lyle/Psionic recommends 12-14W (EL84s want to maximally see 12W, but overpowering them yields the classic Vox power tube distortion and chime and compression and all that, which is why it's essential for the tone to have more than 12W going - if I understand that correctly). Mine was obviously already under 14W, but I thought nearer at 13W or even below that would likely give me a chance to get a bit more longevity out of my EL84s, since they are way more expensive than years ago. What I perhaps do - don't know for sure yet - is just remove one of the seven 1k 2W, which would lead to 167R and would drop the bias even further and pretty surely under 13W, but still above 12W. I think about it and yeah... perhaps will do that. I used what I already had, which is why I chose 7 x 1k 2W instead of additionally ordering 150R 5W; but the good side effect is, that I can get values-in-between this way and by clipping one off I can easily step one step up w/o a bigger soldering/braiding work, which is cool. I don't want to talk about the minimal sound effect I notice by adjusting the bias here, sorry. DID IT: AS EXPECTED I LANDED AT ~167R AND AFTER MEASURING AND USING "ROB" AGAIN I GET 'ABOUT EXACTLY' 12W. TESTED IT FOR A FEW HOURS ALREADY AND IT SOUNDS PRETTY MUCH THE SAME (WAS A BIT "WORRIED" BECAUSE OF THE 12-14W RECOMMENDATION). AND THE TUBES SHOULD BE HAPPY NOW AND SHOULD LAST A LOT LONGER - I GUESS. I KEEP YOU UPDATED.</li>
           </ul>
           <h4>Miscellaneous</h4>
           <ul>
-            <li>Changed the speaker cable, added tube cages to V2 and V3, added power-tube dampeners, and improved the lead dressing.</li>
-            <li>Experimented with different preamp and power tubes, eventually landing on a 12AY7 in V1, a 12AT7 in V3, and matched EH EL84s.</li>
+            <li>Changed the speaker cable from the Greenback to the speaker-PCB to a thick(er) one and soldered it on both sides (like the RCA cable: made a noticeable difference, believe it or not).</li>
+            <li>Added tube cages to V2 and V3 as well as dampeners to the power tubes.</li>
+            <li>For over 10 years I used the following tubes for this amp: "selected" or "gold pin 12AX7" ones for V1, a normal AX7 (JJ) for V2 and an old Sovtek LPS for V3; and matched JJ #7 EL84s for the power tubes. Recently I run a JJ -&gt; EH[since 08.01.26 - slightly smoother high end and a bit less noise in my case] "12AY7 V1" in V1, the old "gold pin 12AX7" in V2 and a normal JJ 12AT7 in V3; while in the power section I landed on matched EH EL84s for now.</li>
+            <li>Lead-Dressing.</li>
           </ul>
           <h4>Outside</h4>
           <ul>
-            <li>Removed unnecessary machine screws, added a handle to the back plate, and added a wooden beam blocker.</li>
-            <li>Removed one corner cap so my Captor X can sit there nicely.</li>
+            <li>Removed the "over 9000" machine and two wood screw from the back-plate; I now just use 3 machine-thumb-screws on critical positions (where the added shielding on the back-plate connects to the chassis for example), which makes working on the amp much easier.</li>
+            <li>Also added a handle where the specification-plate was to easily get this back-plate off, because it always glues itself tight with this dampening foam that is on the chassis.</li>
+            <li>Added a wooden beam-blocker, similar to the ones they had in the past.</li>
+            <li>The VOX Logo fell off years ago and I didn't replace it. It's on my wall now.</li>
+            <li>Removed one corner cap (front-right) to let my Captor X sit there nicely.</li>
           </ul>
           <h4>Future Plans</h4>
           <ul>
-            <li>Try a physical Celestion Blue speaker, improve reliability further, and experiment with the Tone Cut, Reverb Level, and phase-inverter capacitors.</li>
+            <li>Try a physical Celestion Blue speaker in this amp, because I love the York Audio VX15 Celestion Blue IR I use daily with my Captor X on this amp. Celestion's official open back Greenback IR (and the 212 Vox one) I also own I don't dislike, but the Blue seems to suit me better - at least the York IR.</li>
+            <li>Change the Bias (R79: from 120 to 150 or something in between) to run the EL84s a bit cooler and therefore let them live a bit longer.</li>
+            <li>Change some more small parts for better reliability (higher wattage etc).</li>
+            <li>Change some stuff on the Tone Cut and Reverb Level pots I have in mind.</li>
+            <li>C32 : 100nF -&gt; 22nF perhaps? [Phase Inverter's "input cap"; change output cap then too? (100nF too)]</li>
           </ul>
+          <p>If something is missing or comes to mind later, I will edit this post and add the missing bullet-point.</p>
           </div>
           <div class="external-post-footer">
             <span>Originally published on Reddit.</span>
@@ -172,9 +190,10 @@
     <div class="container">
       <h2 class="music-title">Sound &amp;<br><em>Listening</em></h2>
       <p class="music-body">
-        Music writing, recs², or thoughts about music have a home in here.
+        Music writing, recs<sup class="footnote-ref">2</sup>, or thoughts about music have a home in here. Also: reports and thoughts about (my own) music gear.
       </p>
-      <div class="media-post">
+      <p class="footnote"><sup>2</sup> warning : double entendre — “rec” means recordings and/or recommendations.</p>
+      <div class="media-post" id="gauge-post">
         <div class="media-meta">
           <span class="media-date">2026-09-12</span>
         </div>
@@ -193,42 +212,70 @@
           </div>
           <h3 class="external-post-title">Discussion of the infamous Nut Slotting Gauge</h3>
           <div class="external-post-body">
-            <p>I recently bought a "Nut Slotting Gauge" after wanting one for quite some time. I got mine from <a href="https://elmerguitar.com/products/nut-slotting-gauge?_pos=1&amp;_sid=9f89e502b&amp;_ss=r" target="_blank" rel="noopener noreferrer">Elmer Guitar</a> and paid about 75€ in total, delivered to Germany.</p>
-            <p>It is meant for measuring nut slot heights, for which it works pretty much perfectly out of the box, regardless of whether you use the 3rd fret capo method or the open string method. Elmer already removed the internal down-pulling spring, leaving only the gravity and weight of the plunger assembly pushing down onto the strings.</p>
+            <p>I recently bought a "Nut Slotting Gauge" after wanting one for quite some time.</p>
+            <p>I got mine from <a href="https://elmerguitar.com/products/nut-slotting-gauge?_pos=1&amp;_sid=9f89e502b&amp;_ss=r" target="_blank" rel="noopener noreferrer">Elmer Guitar</a> and paid about 75€ in total, delivered to Germany.</p>
+            <p>It is meant for measuring nut slot heights, for which it works pretty much perfectly out of the box; regardless of whether you use the 3rd fret capo method or the open string method.</p>
+            <p>As you can see in the <strong>[purple oval in the picture]</strong>, Elmer already removed the internal down-pulling spring, leaving only the gravity/weight of the plunger assembly itself pushing down onto the strings.</p>
+            <p>However, I wanted to use this tool for measuring neck relief and string action as well, so I tested it in stock form for these two jobs. The plunger assembly itself weighs about <strong>14.7g</strong> (measured using a digital turntable tracking-force scale), which turned out to be a bit too heavy; especially when measuring neck relief, because there the deflection becomes greater then the actual measurement. <strong>(X)</strong></p>
 
             <h4>The Problem with the Stock Form</h4>
-            <p>The plunger assembly weighs about <strong>14.7g</strong>. That turned out to be too heavy for measuring neck relief and string action, because the deflection becomes greater than the actual measurement.</p>
+            <p>Of course, minor deflection isn't an absolute dealbreaker if you just want relative measurements. If a setup feels great and/or is as low as possible without fretting out on the high <em>e</em> string (ones playing style matters here too of course), you can measure that baseline value and repeat it across the other strings for a consistent result. Nonetheless I "wanted more".</p>
+            <p>To put that 14.7g weight into perspective, let's look at the math for a standard <strong>D'Addario EXL110 (.010"–.046")</strong> set on a 25.5" scale length at the 12th fret under the stock 14.7g load:</p>
             <ul>
-              <li>High e (.010"): about 0.32mm sag.</li>
-              <li>B string (.013"): about 0.34mm sag.</li>
-              <li>G string (.017"): about 0.32mm sag.</li>
-              <li>D string (.026" wound): about 0.29mm sag.</li>
-              <li>A string (.036" wound): about 0.27mm sag.</li>
-              <li>Low E (.046" wound): about 0.30mm sag.</li>
+              <li><strong>High <em>e</em> (.010"):</strong> Tension ~16.2 lbs (K ≈ 45.4 g/mm) → <strong>0.32 mm sag</strong></li>
+              <li><strong>B string (.013"):</strong> Tension ~15.4 lbs (K ≈ 43.1 g/mm) → <strong>0.34 mm sag</strong></li>
+              <li><strong>G string (.017"):</strong> Tension ~16.6 lbs (K ≈ 46.5 g/mm) → <strong>0.32 mm sag</strong></li>
+              <li><strong>D string (.026" wound):</strong> Tension ~18.4 lbs (K ≈ 51.5 g/mm) → <strong>0.29 mm sag</strong></li>
+              <li><strong>A string (.036" wound):</strong> Tension ~19.5 lbs (K ≈ 54.6 g/mm) → <strong>0.27 mm sag</strong></li>
+              <li><strong>Low <em>E</em> (.046" wound):</strong> Tension ~17.5 lbs (K ≈ 49.0 g/mm) → <strong>0.30 mm sag</strong></li>
             </ul>
-            <p>If the real action on the high e is 1.50mm, the gauge would read 1.82mm. Since every string has a different tension and gauge, the offset changes across all six strings. That defeats much of the point of using a digital indicator, and makes stock-form neck-relief measurements impractical.</p>
+            <p><em>(Note: Theoretical pure-tension sag numbers; real-world sag on wound strings is slightly higher due to tip compression into the winding).</em></p>
+            <p>Now, 0.32 mm might not sound massive if your target action is 1.50 mm, but for a precision measuring tool, it ruins the entire workflow. If you want a real action of 1.50 mm on the high <em>e</em>, you would have to read 1.82 mm on the dial.</p>
+            <p>Even worse: because string tension and wire gauge differ for every single string, that deflection value changes on all 6 strings. You would constantly have to calculate and subtract a different offset number for every string just to get a simple measurement. That kind of defeats the purpose and ease of having a digital indicator in the first place imho!</p>
+            <p>And as said above already <strong>(X)</strong>, using it for neck relief readings really isn't possible that way / in stock form.</p>
+            <p>To make this gauge practically useful (for me) and easy to work with, I thought a counterbalance mod was necessary.</p>
 
             <h4>The Solution / Mod</h4>
-            <p>I added an upward-pushing spring inside the housing, secured and guided by a chopped-off nail and epoxy. My current favorite is a spring from a Gateron Pro Brown switch, about 20.5mm long with roughly 50g bottom-out force.</p>
+            <p>So I thought: Why not add an upward-pushing spring inside the housing, secured and guided by a chopped-off nail, glued in place with epoxy? <strong>[red oval in the picture]</strong></p>
+            <p>After testing several different spring weights and lengths from mechanical keyboard switches I have laying around, my current favorite is a <strong>spring from a Gateron Pro Brown switch</strong> (~20.5 mm long, ~50g bottom-out).</p>
+            <p>A couple of other tweaks I made "while being in there":</p>
             <ul>
-              <li><strong>O-rings and clearance:</strong> added between the housing screws and display unit to prevent a scratchy plunger movement.</li>
-              <li><strong>Stop-block:</strong> added a small wooden block so the plunger would not get caught on the upper O-ring.</li>
-              <li><strong>Reversible:</strong> all modifications can be undone without damaging the gauge.</li>
+              <li><strong>O-Rings &amp; Clearance [blue arrows in the picture]:</strong> I added some O-rings between the three housing screws and the display unit: The plunger and its internal "measuring matrix" were sitting too close to the PCB, causing a scratchy feel/movement.</li>
+              <li><strong>Stop-Block [yellow oval in the picture]:</strong> I added a small wooden stop-block so the top of the plunger wouldn't get caught on the upper O-ring.</li>
+              <li><strong>100% Reversible:</strong> I made sure all of these mods are completely non-destructive and fully reversible if I ever want to return the gauge to its stock form (the epoxy and nail don't get in the way).</li>
             </ul>
-            <p>It works remarkably well. I have about 2.1mm of travel from the floating point to bottoming out, which is plenty even for a 7.25" radius Strat. I also bought <a href="https://www.top-industrieteile.de/Dichtungen/Flachdichtringe-DIN-7603/Kupfer-Flachdichtringe/Kupfer-Flachdichtung-65-x-95-x-1-mm/" target="_blank" rel="noopener noreferrer">copper shim washers</a> to fine-tune the hovering point. They measure 0.8mm ± 0.01mm rather than 1mm.</p>
+            <p>And I can report: <strong>It works remarkably well!</strong></p>
+            <p>I have ~2.1 mm of travel range from the floating/hovering point down to bottoming out, which is plenty of stroke even for my 7.25" radius Strat.</p>
+            <p>To fine-tune the offset/hovering-point across different guitars, I bought some copper shim washers that fit between the digital indicator gauge and the brass base block: <a href="https://www.top-industrieteile.de/Dichtungen/Flachdichtringe-DIN-7603/Kupfer-Flachdichtringe/Kupfer-Flachdichtung-65-x-95-x-1-mm/" target="_blank" rel="noopener noreferrer">Top Industrieteile Copper Washers</a> They actually measure exactly 0.8 mm ± 0.01 mm, not 1 mm, in thickness and could easily be filed to thinner sizes if needed. Two fit in there nicely while still leaving the set-screw on the brass base working.</p>
 
             <h4>How My Workflow Works Now</h4>
-            <p>With the washers adjusted so the high e sits only 0.1mm to 0.3mm above the floating point, the net downward load drops below 1.5g to 2g. String deflection on the high e becomes negligible at about 0.03mm.</p>
-            <p>Thicker strings move the plunger higher and decompress the spring, adding some net weight. In practice, the low E initially showed around 0.1mm of deflection. Adding a third 0.8mm washer restored the counter-push and reduced this to about 0.01mm.</p>
+            <p>My workflow is to use (or omit) the copper washers so that when measuring the high <em>e</em> string, the string pushes the plunger at most <strong>0.1 mm to 0.3 mm above its floating/hovering point</strong>.</p>
+            <p>By keeping the plunger right near its neutral floating point on the high <em>e</em>, the net downward load on the string drops to under <strong>1.5g to 2.0g</strong>. At this tiny load, string deflection on the high <em>e</em> drops to a negligible <strong>~0.03 mm (~0.001")</strong>: visually rock-solid and well within "standard lutherie tolerances".</p>
+            <p>As you move up to thicker strings, the higher physical string profile moves the plunger further above its hovering point (~0.91 mm higher on a .046" wound <em>E</em> due to diameter alone, plus any gradual action progression). This decompresses the switch spring slightly and adds about 5g to 7g of net weight on the wound strings.</p>
             <ul>
-              <li><strong>Plain strings:</strong> two washers, targeting 0.20mm–0.25mm of spring decompression.</li>
-              <li><strong>Wound strings:</strong> three washers, targeting 0.30mm–0.35mm of spring decompression.</li>
+              <li><strong>Theory vs. Real-World Practice:</strong> In "pure mechanical theory", the thick steel core wire of a wound string has exponentially higher flexural bending stiffness (EI ∝ d4), acting like a rigid beam that resists added load. However, in real-world testing, the Low <em>E</em> string still shows around <strong>~0.1 mm of deflection</strong>. This is easily explained by real-world factors: e.g. the pointed indicator tip compresses slightly into the softer outer wrap wire, and there is local coil compliance in wound strings that simple beam equations don't capture.</li>
+              <li><strong>Why it still kinda works in practice:</strong> As you move from plain to wound strings during a setup, you thoughtfully give thicker strings slightly more clearance anyway (e.g. 1.5 mm on high <em>e</em> vs 1.8 mm on low <em>E</em>) to accommodate their wider vibrational arc. Because you naturally set slightly higher action on thicker strings, this minor ~0.1 mm real-world deflection compensates itself on the go while doing the setup. You just have to keep it in mind.</li>
             </ul>
-            <p>This makes the gauge practically 1:1 accurate across all six strings for a 10–46 set, with tiny adjustments allowing it to adapt to other guitars.</p>
 
             <h4>Conclusion</h4>
-            <p>All in all, I'm quite happy with how this turned out and wanted to share my experience. I may experiment with longer, lighter springs to flatten the force curve further, although the spring cannot be so long or soft that the necessary travel range is lost.</p>
-            <p>For context, the original StewMac gauge uses a much lighter plunger assembly than this import unit. The difference in downward force is demonstrated in <a href="https://www.youtube.com/watch?v=TD-vIF7FrXQ&amp;t=1061s" target="_blank" rel="noopener noreferrer">Paul's Milehouse Studios comparison video</a>.</p>
+            <p>All in all, I'm quite happy with how this turned out and wanted to share my experience!</p>
+            <p>In the future, I might experiment with even longer, lighter springs (like 22 mm 30g/35g slow-curve keyboard springs) to flatten the spring force curve even further. But there's a limit: the spring can't be too long or soft, otherwise you lose the essential travel range needed when mounting the brass base.</p>
+            <p>What do you think about this setup? Do you have other ideas? Let me know!</p>
+
+            <h4>UPDATE</h4>
+            <p>..on the extra deflection issue: Remember, because the thicker wound strings (D, A, Low E) push the plunger significantly higher up, the Gateron Brown spring decompresses slightly but noticeably. Losing that bit of upward counter-push upwards dropped about +5.5g of net weight onto the Low E, for example (cf. above), causing an extra 0.10 mm of measured string sag: I verified this by comparing measurement results before and after placing a 0.95 mm dense piece of cardboard between the brass base and the fingerboard to simulate the height jump.</p>
+            <p><strong>The Fix:</strong> I surprisingly found out that a 3rd washer (~0.8 mm) actually fits inside/between the brass base and the gauge without blocking the brass base set-screw like I originally feared!</p>
+            <p>This makes a super easy 2-step workflow possible:</p>
+            <ul>
+              <li><strong>Plain Strings (e, B, G):</strong> 2 washers (standard setup). Target display reading: <strong>0.20 mm – 0.25 mm</strong> of decompression of the spring compared to the neutral hovering position of the plunger. String sag is basically zero (~0.00 mm on high e to &lt;0.02 mm on G).</li>
+              <li><strong>Wound Strings (D, A, Low E):</strong> Drop in the 3rd washer. This re-compresses the spring by 0.8 mm, restoring the upward counter-push / compression of the spring and/by canceling out the string height jump. Target display reading here: <strong>0.30 mm – 0.35 mm</strong> (of decompression of the spring compared to the neutral hovering position of the plunger).</li>
+            </ul>
+            <p>That 0.10 mm sag on the Low E immediately dropped down to an unnoticeable ~0.01 mm (along with D and A staying well within ~0.01 mm – 0.03 mm), making the gauge practically 1:1 accurate across all 6 strings. No need to buy specialized 22mm springs (considered these: <a href="https://monacokeys.de/en/products/kaidi-kos-switch-springs?variant=53290126442829" target="_blank" rel="noopener noreferrer">37g version</a>), just using the Gateron Brown spring from before and a 3rd spare washer did the trick!</p>
+            <p>Switching steps from plain to wound strings is definitely the sweet spot for 10–46 sets on my guitar's specific radius and fret height, but with tiny adjustments, this method will easily adapt to any guitar setup.</p>
+
+            <h4>UPDATE 2</h4>
+            <p><strong>A quick note on the original StewMac gauge vs. import units:</strong> Regarding the original StewMac unit for context; this one actually uses a much lighter plunger assembly out of the box, so it exerts very little downward force on the string. You can see this tested directly in Paul’s <em>Milehouse Studios</em> video (<em>"The Battle of the Depth Gauges"</em>), where he compares the lighter StewMac plunger to a heavier, standard digital indicator plunger starting at <a href="https://www.youtube.com/watch?v=TD-vIF7FrXQ&amp;t=1061s" target="_blank" rel="noopener noreferrer">17:41</a> (with the side-by-side string deflection test demonstrated from <a href="https://www.youtube.com/watch?v=TD-vIF7FrXQ&amp;t=1198s" target="_blank" rel="noopener noreferrer">19:58</a> to 20:15).</p>
+            <p>Also, DylanTalksTone has some videos where the deflection seems way less than what I experienced with the un-modded import gauge.</p>
           </div>
           <div class="external-post-footer">
             <span>Originally published on Reddit.</span>
@@ -272,9 +319,17 @@
         </p>
         <span class="cite-source">— Oppenheim Conjecture (Margulis, 1987)</span>
       </div> -->
+      <div class="media-post">
+        <div class="media-meta">
+          <span class="media-date">2026-09-14</span>
+        </div>
+        <p class="media-text">
+          Note to myself: Consider sharing my master's thesis here on this website.
+        </p>
+      </div>
             <div class="media-post">
         <div class="media-meta">
-          <span class="media-date">2026-06-04</span>
+          <span class="media-date">2026-08-24</span>
         </div>
         <p class="media-text">
           Studying (pure mathematics) at university leads you to learn, how to learn/study </br> and/or do the l&aelig;tter "better". </br> You get to know yourself (in that regard) in great detail: Because everyone learns and consumes differently. </br> While doing that, you also learn how to ask better questions; because as one knows: </br> 
@@ -327,7 +382,7 @@ What one learns while being at university, too, implicitly, is to highten their 
           <div class="media-meta">
             <span class="media-date">2026-09-13</span>
           </div>
-          <p class="media-text">First fact about myself: I REALLY like Penguins. 🐧♥️</p>
+          <p class="media-text">First fact about myself: I REALLY like Penguins 🐧</p>
         </div>
       </div>
     </div>
@@ -349,6 +404,7 @@ What one learns while being at university, too, implicitly, is to highten their 
           <ul class="media-list">
             <li><span>youtube</span> &rarr; <a href="https://www.youtube.com/@qornerfyi" target="_blank" rel="noopener noreferrer"><strong>@qornerfyi</strong> ↗</a></li>
             <li><span>reddit</span> &rarr; <a href="https://www.reddit.com/user/_KJuns/" target="_blank" rel="noopener noreferrer"><strong>u/_KJuns</strong> ↗</a></li>
+            <li><span>github</span> &rarr; <a href="https://github.com/qns7" target="_blank" rel="noopener noreferrer"><strong>qns7</strong> ↗</a></li>
             <li><span>...</span> &rarr; <strong>placeholder for another qorner</strong></li>
           </ul>
         </div>
@@ -358,10 +414,22 @@ What one learns while being at university, too, implicitly, is to highten their 
 
   <!-- FOOTER -->
   <footer>
-    <span>built by hand &nbsp;·&nbsp; <a href="mailto:">say hello</a></span>
+    <span>built by hand &nbsp;·&nbsp; <a href="mailto:qlsen@gmx.net">say hello</a> AND/OR <a class="footer-paypal" href="https://paypal.me/qlsen" target="_blank" rel="noopener noreferrer">send a few €uros</a> via PayPal to support me ♥️</span>
   </footer>
 
   <script>
+    // Keep instrument-related posts together in Music while retaining one canonical source.
+    const musicSection = document.getElementById('music');
+    const gaugePost = document.getElementById('gauge-post');
+    const ampPost = document.getElementById('amp-post');
+    const stratPost = document.getElementById('strat-post');
+    if (ampPost && gaugePost && musicSection) {
+      gaugePost.insertAdjacentElement('afterend', ampPost);
+    }
+    if (stratPost && gaugePost && musicSection) {
+      musicSection.querySelector('.container').insertBefore(stratPost, gaugePost);
+    }
+
     // PDF Viewer
     pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -382,7 +450,7 @@ What one learns while being at university, too, implicitly, is to highten their 
     const scale = containerWidth / initialViewport.width;
     const viewport = page.getViewport({ scale: scale });
 
-    const outputScale = window.devicePixelRatio || 1;
+    const outputScale = Math.min((window.devicePixelRatio || 1) * 1.5, 3);
 
     canvas.width = Math.floor(viewport.width * outputScale);
     canvas.height = Math.floor(viewport.height * outputScale);

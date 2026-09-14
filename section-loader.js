@@ -2,7 +2,7 @@ const sectionPage = document.querySelector('.section-page');
 const sectionId = sectionPage.dataset.section;
 const sectionMain = sectionPage.querySelector('main');
 
-fetch('index.html')
+fetch('index.html', { cache: 'no-store' })
   .then(response => {
     if (!response.ok) throw new Error(`Could not load index.html: ${response.status}`);
     return response.text();
@@ -11,6 +11,18 @@ fetch('index.html')
     const documentFragment = new DOMParser().parseFromString(markup, 'text/html');
     const sourceSection = documentFragment.getElementById(sectionId);
     if (!sourceSection) throw new Error(`Section not found: ${sectionId}`);
+
+    if (sectionId === 'music') {
+      const roomSection = documentFragment.getElementById('room');
+      const gaugePost = sourceSection.querySelector('#gauge-post');
+      const ampPost = roomSection?.querySelector('#amp-post');
+      const stratPost = roomSection?.querySelector('#strat-post');
+      if (ampPost && gaugePost) gaugePost.insertAdjacentElement('afterend', ampPost);
+      if (stratPost && gaugePost) sourceSection.querySelector('.container').insertBefore(stratPost, gaugePost);
+    } else if (sectionId === 'room') {
+      sourceSection.querySelector('#strat-post')?.remove();
+      sourceSection.querySelector('#amp-post')?.remove();
+    }
 
     sectionMain.innerHTML = sourceSection.outerHTML;
     sectionPage.classList.add('section-loaded');
@@ -42,9 +54,14 @@ function initializePdfViewer() {
     function renderPage(number) {
       documentProxy.getPage(number).then(page => {
         const viewport = page.getViewport({ scale: Math.min(window.innerWidth - 40, 760) / page.getViewport({ scale: 1 }).width });
-        canvas.width = viewport.width;
-        canvas.height = viewport.height;
-        page.render({ canvasContext: context, viewport });
+        const outputScale = Math.min((window.devicePixelRatio || 1) * 1.5, 3);
+        canvas.width = Math.floor(viewport.width * outputScale);
+        canvas.height = Math.floor(viewport.height * outputScale);
+        page.render({
+          canvasContext: context,
+          viewport,
+          transform: [outputScale, 0, 0, outputScale, 0, 0]
+        });
         currentPage.textContent = number;
         previousButton.disabled = number <= 1;
         nextButton.disabled = number >= documentProxy.numPages;
