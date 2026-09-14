@@ -228,8 +228,9 @@ section:last-child { border-bottom: none; }
 }
 
 .footnote sup {
-  font-family: 'Geist Mono', monospace;
-  font-size: 0.7em;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.638rem;
+  line-height: 0;
   vertical-align: super;
   margin-right: 0.2em;
 }
@@ -822,26 +823,6 @@ footer a.footer-about {
 }
 
 footer a:hover { color: var(--orange); }
-
-/* ─── ABOUT ─────────────────────────────────────────────────── */
-#about {
-  background: var(--bg);
-}
-
-.about-body {
-  max-width: 600px;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 1.8;
-  color: var(--ink);
-  margin-bottom: 0;
-}
-
-.about-body + .about-body {
-  margin-top: 1.5rem;
-}
 
 /* ─── SCROLL INDICATOR ──────────────────────────────────────── */
 .scroll-dot {
