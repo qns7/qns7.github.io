@@ -966,3 +966,15 @@ footer a:hover { color: var(--orange); }
   margin: -0.73rem 0rem -1.3rem 1rem;
   object-fit: contain;
 }
+
+@media (max-height: 950px) {
+  #home {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+  }
+
+  #home .home-logo-placeholder {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
