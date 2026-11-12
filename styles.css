@@ -745,6 +745,28 @@ section a:hover {
   color: var(--ink);
 }
 
+.media-post .media-text + .media-text {
+  margin-top: 1rem;
+}
+
+.media-quote {
+  margin: 1.5rem 0 0;
+  padding-left: 1rem;
+  border-left: 2px solid var(--rule);
+}
+
+.media-quote p {
+  margin-bottom: 0.9rem;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--ink-muted);
+}
+
+.media-quote p:last-child {
+  margin-bottom: 0;
+}
+
 .media-list {
   margin: 1rem 0 1rem 0;
   padding-left: 1.2rem;

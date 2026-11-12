@@ -25,15 +25,16 @@ sub absolutize {
 }
 
 sub latest_target {
-    my ($best_date, $best_target) = ('', 'index.html');
+    my ($best_key, $best_target) = ('', 'index.html');
     for my $page (qw(room music words academia ranournal dispatches)) {
         next unless -f "$page.html";
         my $s = slurp("$page.html", ':encoding(UTF-8)');
         $s =~ s/<!--.*?-->//gs;
-        while ($s =~ m{<div class="media-post"(?: id="([^"]+)")?>\s*<div class="media-meta">\s*<span class="media-date">(\d{4}-\d{2}-\d{2})</span>}g) {
-            my ($id, $date) = ($1, $2);
-            next unless $date gt $best_date;
-            ($best_date, $best_target) = ($date, "$page.html" . (defined $id ? "#$id" : ''));
+        while ($s =~ m{<div class="media-post"(?: id="([^"]+)")?(?: data-t="(\d\d:\d\d)")?>\s*<div class="media-meta">\s*<span class="media-date">(\d{4}-\d{2}-\d{2})</span>}g) {
+            my ($id, $time, $date) = ($1, $2, $3);
+            my $key = $date . ' ' . (defined $time ? $time : '00:00');
+            next unless $key gt $best_key;
+            ($best_key, $best_target) = ($key, "$page.html" . (defined $id ? "#$id" : ''));
         }
     }
     return $best_target;
