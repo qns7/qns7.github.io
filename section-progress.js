@@ -8,5 +8,5 @@ function updateProgress() {
 
 window.addEventListener('scroll', updateProgress, { passive: true });
 window.addEventListener('resize', updateProgress);
-window.addEventListener('section:loaded', updateProgress);
+window.addEventListener('load', updateProgress);
 updateProgress();

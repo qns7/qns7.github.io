@@ -4,21 +4,367 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music — (The) Qorner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260914">
+  <meta name="description" content="Music writing, recs, or thoughts about music, and reports and thoughts about (my own) music gear.">
+  <link rel="canonical" href="https://qorner.fyi/music.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="(The) Qorner">
+  <meta property="og:title" content="Music — (The) Qorner">
+  <meta property="og:description" content="Music writing, recs, or thoughts about music, and reports and thoughts about (my own) music gear.">
+  <meta property="og:url" content="https://qorner.fyi/music.html">
+  <meta property="og:image" content="https://qorner.fyi/og.png">
+<!-- @head -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/geist-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=ca2c491e">
+<!-- @/head -->
 </head>
-<body class="section-page music-page" data-section="music">
+<body class="section-page music-page">
+<!-- @phoneblock -->
+  <div class="phone-block">
+    <p class="phone-block-quote"><em>FUCK phones!</em> Only available on “big screens”, not sorry.</p>
+    <div class="phone-block-author"><img class="phone-block-logo" src="logo-small.png" width="400" height="400" loading="lazy" alt="Q's logo"></div>
+  </div>
+<!-- @/phoneblock -->
+<!-- @nav -->
   <nav><ul class="nav-links">
     <li><a href="index.html">home</a></li><li><a href="room.html">room</a></li><li><a href="music.html">music</a></li><li><a href="words.html">words</a></li><li><a href="academia.html">academia</a></li><li><a href="ranournal.html">ranournal</a></li><li><a href="dispatches.html">dispatches_from_elsewhere</a></li>
   </ul></nav>
+<!-- @/nav -->
   <div class="section-progress" aria-hidden="true"><i></i></div>
-  <main></main>
+  <main>
+    <section id="music">
+      <div class="container">
+        <h2 class="music-title">Sound &amp;<br><em>Listening</em></h2>
+        <p class="music-body">
+          Music writing, recs<sup class="footnote-ref">2</sup>, or thoughts about music have a home in here. Also: reports and thoughts about (my own) music gear.
+        </p>
+        <p class="footnote"><sup>2</sup> warning : double entendre — “rec” means recordings and/or recommendations.</p>
+        <div class="media-post" id="barrows-post">
+          <div class="media-meta">
+            <span class="media-date">2026-11-12</span>
+          </div>
+          <figure class="media-post-image">
+            <img src="barrowsmod.jpeg" width="2400" height="1800" loading="lazy" decoding="async" alt="after mod">
+          </figure>
+          <p class="media-text">
+            My EQD Barrows, modded with a bias/texture control and a mode switch I can actually reach - plus a custom silicon second mode (see the update at the end).
+          </p>
+          <article class="external-post reddit-post">
+            <div class="external-post-meta">
+              <span class="external-post-source">reddit</span>
+              <span>r/guitarpedals</span>
+              <span>by u/_KJuns</span>
+              <span>originally posted: 2026-10-31</span>
+            </div>
+            <h3 class="external-post-title">Modded my EQD Barrows (Bias/Texture-Control and Mode-Switch)</h3>
+            <div class="external-post-body">
+              <p>Hey everyone,</p>
+              <p>I wanted to share a custom mod I just finished on my EQD Barrows. I’ve seen a few builders offering a starve/bias and mode mod for this pedal (like the Cosmodio mod seen <a href="https://www.youtube.com/watch?v=27WO5VGIPUA" target="_blank" rel="noopener noreferrer">here</a> on YouTube). They were nice enough to share some high-level insights into their process, but in the end I did it differently electronically and functionally because I couldn't quite figure out exactly what they were doing based on the information I got.</p>
+              <p>Here is a breakdown of why I built it this way, how the circuit logic works, and how I fine-tuned the taper.</p>
+
+              <h4>1. Form Factor &amp; Enclosure Trade-offs</h4>
+              <p>Instead of using recessed controls that I cannot manipulate on the fly, I opted for another design: normal, full-sized external controls accessible on top.</p>
+              <p>The space inside the enclosure is very limited. I think I could have fit it in there while leaving the footswitch and LED by removing the enclosure-grounding-spring-thing and fitting an even smaller switch where the current one sits, but I didn't want to order new parts and preferred to use what I had laying around.</p>
+              <p>Since this pedal lives permanently on my home studio pedalboard inside a GigRig QMX loop switcher, I always block the switch and cover the LEDs anyway since they are distracting to me—so it's a win-win in my book. As a side note on the visual mod: the LED coverage is just a cutoff nail head I glued in and shielded from the inside (not that shielding matters here, but why not!).</p>
+
+              <h4>2. The Circuit Approach (No SMD Interruption Needed!)</h4>
+              <p>How the mod is done should be pretty self-explanatory with the pictures I shared. This way, you don't have to mess with SMD parts or find hidden nice points on the PCB by probing to intrude the circuit in a suitable spot: you intersect exactly at Q1 and Q3—easy!</p>
+              <ul>
+                <li><strong>Series Resistance Mode:</strong> By adding variable resistance directly in series with Q3's collector connection, you increase DC voltage relative to ground, starving the transistor of operating headroom.</li>
+                <li><strong>Why Keeping the Original Circuit Path Wins:</strong> Keeping the stock Q3 collector resistor on the board means the original stock sound is instantly and easily available at 7 o'clock on the knob without any unsure searching or guessing where the factory sweet spot was.</li>
+                <li><strong>What's Not Possible This Way:</strong> Overbiasing, because the stock voltage resistor for the Q3 collector is still in there, of course. I assume it's an 8.2k resistor (measuring parts inside an active circuit is always a bit inconclusive, obviously). I'm not interested in overbiasing anyway, but if you are, you would probably have to mess directly with that according resistor on the board.</li>
+              </ul>
+
+              <h4>3. Voice-Tuning the Taper &amp; Eliminating the "Dead Zone"</h4>
+              <p>Another thing I did is that I painstakingly "voiced" the bias pot, meaning I tried a lot of values and combinations with parallel resistors to get my desired taper and maximum starving. I'm very happy with the current setup:</p>
+              <ul>
+                <li><strong>The Pot &amp; Resistor Setup:</strong> I settled on a B25k (Linear) pot paired with a ~2.47 kΩ parallel resistor across Lugs 1 and 2.</li>
+                <li><strong>The Math:</strong> On my measured 25.79 kΩ pot, a 2.47 kΩ parallel <s>cap</s> resistor sets the maximum added load to ~2.25 kΩ at full CW turn.</li>
+                <li><strong>The Tonal Result:</strong> It's a very even taper. At "minimum voltage" (maximum starve at 5 o'clock), the sound doesn't choke out COMPLETELY—it sits right before the point where that would happen. To be honest, a completely choked/dead sound isn't usable for me. So it's basically pretty much the famous choking SOUND (which I checked before a lot with other values, of course), but without the pretty unpredictable gating. For now, this is how I like it, but a change would be quick if I decide the gating/dying sound is something I suddenly want.</li>
+              </ul>
+
+              <h4>Final Thoughts</h4>
+              <p>Now the pedal is an even more awesome fuzz than stock, with a lot of textures and pots that are almost all usable across the whole range! "Almost" because the "Fuzz Face / Mk1.5" mode should be driven maxed out as usual—only there does it really sound good.</p>
+              <p>Of course, the guitar with its controls is the added control for this fuzz! The stock MkII mode cleans up awesomely too—really, in my setup and to my taste, even better than the Mk1.5 mode. I always live as a default on 7 on my guitar's volume knob so I can adjust up and down and stay completely "free" on the instrument, so to say. This fuzz is basically part of the instrument now.</p>
+              <p>With the accessible controls and all, it has turned into a very awesome overdubbing tool in the studio, and it's just a very nice, versatile fuzz for playing live, of course, too!</p>
+              <p>If you decide to try this mod yourself, the pictures I shared show the exact wiring points. Let me know if you have any questions!</p>
+
+              <h4>4. UPDATE: Reworking the Second Mode (From Mk1.5 to a Custom Silicon Lead Voice)</h4>
+              <p>After running the pedal for some days, I quickly realized that the stock/raw Mk1.5 / FuzzFace mode just wasn't cutting it in a real-world scenario. The fact that it only really does anything usable when it's dimed felt like a wasted opportunity, so I decided to rethink it.</p>
+              <p>My new idea was: instead of just bridging the Q1 Collector and Base leads coming from the PCB for the second mode, why not drop in a dedicated SILICON transistor and "volume-bias" it with a resistor across the switch lugs to make it a proper, usable partner for the stock Germanium mode?</p>
+              <p>Here is how the journey actually went:</p>
+              <ul>
+                <li><strong>Choosing the Transistor:</strong> First, I had to figure out which transistor I actually liked best in this position. After testing all four PNP transistors I currently have in my arsenal (A1015, BC327, 2N3906, and <s>S8850</s> S8550), I finally swapped in an S8550 to get that tight low-end and high-gain bite. Turns out, it's extremely sensitive to base-to-collector feedback.</li>
+                <li><strong>The Resistor Hunt:</strong>
+                  <ul>
+                    <li><strong>No resistor (raw):</strong> Too quiet and lacked the compression I wanted.</li>
+                    <li><strong>680kΩ, 1MΩ, and 2MΩ:</strong> Way too loud. They flooded the base with DC current, turning the stage into an uncontrollable volume boost that completely overpowered the Germanium side.</li>
+                    <li><strong>The 10MΩ Sweet Spot:</strong> Going all the way up to a 10MΩ resistor (the biggest one I had laying around) between the base and collector lugs finally hit the sweet spot - which was good, 'cause a "resistor-daisy-chain" wouldn't have fit in there xD It provides a bit of warmth and compression while keeping the volume sitting just a hair above the Germanium mode; it's tight and thick, but still crispy - awesome.</li>
+                  </ul>
+                </li>
+              </ul>
+              <p>Everything is wired cleanly off-board right on the switch with zero permanent mods to the circuit board.</p>
+              <p>With this new mode, I can now get Frusciante-like singing leads (reminding me a bit of a DS-2 or Big Muff vibe), but with way more definition, making it actually usable in lower registers too - which was a very happy surprise. With the stock Barrows in it's dimed setting, the low end was too broken and loose and the sustain didn't really match that kind of tone (it's a cool tone, but not THAT tone), but with the S8550 in there, that's possible in a way I never experienced before - but I have to admit that my experience is very limited xD</p>
+              <p>Now I'm very happy with the end result - and hopefully will be 🙃</p>
+            </div>
+            <div class="external-post-footer">
+              <span>Originally published on Reddit.</span>
+              <a href="https://www.reddit.com/r/guitarpedals/comments/1xkbink/modded_my_eqd_barrows_biastexturecontrol_and/" target="_blank" rel="noopener noreferrer">read original on Reddit ↗</a>
+            </div>
+          </article>
+        </div>
+        <div class="media-post" id="decal-post">
+          <div class="media-meta">
+            <span class="media-date">2026-11-12</span>
+          </div>
+          <figure class="media-post-image">
+            <img src="decal.jpg" width="2400" height="1213" loading="lazy" decoding="async" alt="Rothko &amp; Frost decal under lacquer">
+          </figure>
+          <p class="media-text">
+            The follow-up to the decal note below: Rothko &amp; Frost delivered - and the update has my full lacquer timeline for burying the edges.
+          </p>
+          <article class="external-post reddit-post">
+            <div class="external-post-meta">
+              <span class="external-post-source">reddit</span>
+              <span>r/Luthier</span>
+              <span>by u/_KJuns</span>
+              <span>originally posted: 2026-09-28</span>
+            </div>
+            <h3 class="external-post-title">Rothko &amp; Frost make great decals!</h3>
+            <div class="external-post-body">
+              <p>Very sharp, very thin, and the metallic looks great.</p>
+              <p>If done correctly there is absolutely no ghost line visible in the end.</p>
+              <p>On the website they say:</p>
+              <p>"Please note: We print using ribbons and there is a visible line where the ribbons meet in some designs. On most decals this is not noticeable. The effect is more pronounced on larger blocks of metallic colour and fade during the polishing process. In most cases these lines disappear altogether.“</p>
+              <p>And it’s true: you can see slight lines in the metallic, but that’s a trade-off well worth it when you see the quality otherwise. I doubt you can get or make a better decal yourself.</p>
+              <p>Thank you R&amp;F!</p>
+
+              <h4>UPDATE: A question from the comments</h4>
+              <blockquote><p>Looks great! Nice job burying the edges. Did you use a spray can of nitrocellulose lacquer?</p></blockquote>
+              <p>Yes, but it was a "nitro combination lacquer", not pure nitro cellulose: <a href="https://www.auto-k.de/en/spray-paints/more-brands/racing/racing-products/2-coat-clear-lacquer" target="_blank" rel="noopener noreferrer">https://www.auto-k.de/en/spray-paints/more-brands/racing/racing-products/2-coat-clear-lacquer</a></p>
+              <p>Timeline:</p>
+              <ul>
+                <li>two layers as a base (not super wet, but two full medium-fast cross-passes)</li>
+                <li>wait 24h</li>
+                <li>wet-sanded flat and uniformly matte with 1000, then applied the decal</li>
+                <li>wait 24h</li>
+                <li>3 mist coats with 15 minutes of settling in between</li>
+                <li>5 coats like the base-layer with 20 minutes of waiting time in between</li>
+                <li>wait 24h</li>
+                <li>wet-sanded flat and uniformly matte with 1000 (here the edge vanishes)</li>
+                <li>two really wet coats with 30 minutes between them</li>
+                <li>wait 48h</li>
+                <li>final wet-sand with 1000 and polishing after that with mesh</li>
+              </ul>
+            </div>
+            <div class="external-post-footer">
+              <span>Originally published on Reddit.</span>
+              <a href="https://www.reddit.com/r/Luthier/comments/1ws968f/rothko_frost_make_great_decals/" target="_blank" rel="noopener noreferrer">read original on Reddit ↗</a>
+            </div>
+          </article>
+        </div>
+        <div class="media-post" id="strat-post">
+          <div class="media-meta">
+            <span class="media-date">2026-09-12</span>
+          </div>
+          <p class="media-text">
+            Note to myself: Write a (reddit) report or make a YouTube video about my Strat. Before: Try to get or make a decal in the "'54 spaghetti logo style", but with:
+          </p>
+          <ul class="media-list">
+            <li><span>Fender</span> &rarr; <strong>Modern'59</strong></li>
+            <li><span>STRATOCASTER</span> &rarr; <strong>QUSTOM HARDTAIL</strong></li>
+            <li><span>WITH SYNCHRONISED TREMOLO</span> &rarr; <strong>MADE IN GERMANY BY QNS</strong></li>
+            <li><span>ORIGINAL Contour Body</span> &rarr; <strong>EVOLVING since 2018</strong></li>
+          </ul>
+          <p class="media-text">
+          <s>Perhaps move this entry to "music".</s>
+          </p>
+        </div>
+        <div class="media-post" id="gauge-post">
+          <div class="media-meta">
+            <span class="media-date">2026-09-12</span>
+          </div>
+          <figure class="media-post-image">
+            <img src="gaugemod.jpeg" width="960" height="1280" loading="lazy" decoding="async" alt="Modified nut slotting gauge with marked internal components">
+          </figure>
+          <p class="media-text">
+            A discussion of the infamous nut slotting gauge, and how I made mine useful for measuring relief AND string action. <s>I think it fits into this section of the Qorner, it's a maintenance tool and not "room specific gear" per se.. I guess..</s>
+          </p>
+          <article class="external-post reddit-post">
+            <div class="external-post-meta">
+              <span class="external-post-source">reddit</span>
+              <span>r/Luthier</span>
+              <span>by u/_KJuns</span>
+              <span>originally posted: 2026-08-17</span>
+            </div>
+            <h3 class="external-post-title">Discussion of the infamous Nut Slotting Gauge</h3>
+            <div class="external-post-body">
+              <p>I recently bought a "Nut Slotting Gauge" after wanting one for quite some time.</p>
+              <p>I got mine from <a href="https://elmerguitar.com/products/nut-slotting-gauge?_pos=1&amp;_sid=9f89e502b&amp;_ss=r" target="_blank" rel="noopener noreferrer">Elmer Guitar</a> and paid about 75€ in total, delivered to Germany.</p>
+              <p>It is meant for measuring nut slot heights, for which it works pretty much perfectly out of the box; regardless of whether you use the 3rd fret capo method or the open string method.</p>
+              <p>As you can see in the <strong>[purple oval in the picture]</strong>, Elmer already removed the internal down-pulling spring, leaving only the gravity/weight of the plunger assembly itself pushing down onto the strings.</p>
+              <p>However, I wanted to use this tool for measuring neck relief and string action as well, so I tested it in stock form for these two jobs. The plunger assembly itself weighs about <strong>14.7g</strong> (measured using a digital turntable tracking-force scale), which turned out to be a bit too heavy; especially when measuring neck relief, because there the deflection becomes greater then the actual measurement. <strong>(X)</strong></p>
+
+              <h4>The Problem with the Stock Form</h4>
+              <p>Of course, minor deflection isn't an absolute dealbreaker if you just want relative measurements. If a setup feels great and/or is as low as possible without fretting out on the high <em>e</em> string (ones playing style matters here too of course), you can measure that baseline value and repeat it across the other strings for a consistent result. Nonetheless I "wanted more".</p>
+              <p>To put that 14.7g weight into perspective, let's look at the math for a standard <strong>D'Addario EXL110 (.010"–.046")</strong> set on a 25.5" scale length at the 12th fret under the stock 14.7g load:</p>
+              <ul>
+                <li><strong>High <em>e</em> (.010"):</strong> Tension ~16.2 lbs (K ≈ 45.4 g/mm) → <strong>0.32 mm sag</strong></li>
+                <li><strong>B string (.013"):</strong> Tension ~15.4 lbs (K ≈ 43.1 g/mm) → <strong>0.34 mm sag</strong></li>
+                <li><strong>G string (.017"):</strong> Tension ~16.6 lbs (K ≈ 46.5 g/mm) → <strong>0.32 mm sag</strong></li>
+                <li><strong>D string (.026" wound):</strong> Tension ~18.4 lbs (K ≈ 51.5 g/mm) → <strong>0.29 mm sag</strong></li>
+                <li><strong>A string (.036" wound):</strong> Tension ~19.5 lbs (K ≈ 54.6 g/mm) → <strong>0.27 mm sag</strong></li>
+                <li><strong>Low <em>E</em> (.046" wound):</strong> Tension ~17.5 lbs (K ≈ 49.0 g/mm) → <strong>0.30 mm sag</strong></li>
+              </ul>
+              <p><em>(Note: Theoretical pure-tension sag numbers; real-world sag on wound strings is slightly higher due to tip compression into the winding).</em></p>
+              <p>Now, 0.32 mm might not sound massive if your target action is 1.50 mm, but for a precision measuring tool, it ruins the entire workflow. If you want a real action of 1.50 mm on the high <em>e</em>, you would have to read 1.82 mm on the dial.</p>
+              <p>Even worse: because string tension and wire gauge differ for every single string, that deflection value changes on all 6 strings. You would constantly have to calculate and subtract a different offset number for every string just to get a simple measurement. That kind of defeats the purpose and ease of having a digital indicator in the first place imho!</p>
+              <p>And as said above already <strong>(X)</strong>, using it for neck relief readings really isn't possible that way / in stock form.</p>
+              <p>To make this gauge practically useful (for me) and easy to work with, I thought a counterbalance mod was necessary.</p>
+
+              <h4>The Solution / Mod</h4>
+              <p>So I thought: Why not add an upward-pushing spring inside the housing, secured and guided by a chopped-off nail, glued in place with epoxy? <strong>[red oval in the picture]</strong></p>
+              <p>After testing several different spring weights and lengths from mechanical keyboard switches I have laying around, my current favorite is a <strong>spring from a Gateron Pro Brown switch</strong> (~20.5 mm long, ~50g bottom-out).</p>
+              <p>A couple of other tweaks I made "while being in there":</p>
+              <ul>
+                <li><strong>O-Rings &amp; Clearance [blue arrows in the picture]:</strong> I added some O-rings between the three housing screws and the display unit: The plunger and its internal "measuring matrix" were sitting too close to the PCB, causing a scratchy feel/movement.</li>
+                <li><strong>Stop-Block [yellow oval in the picture]:</strong> I added a small wooden stop-block so the top of the plunger wouldn't get caught on the upper O-ring.</li>
+                <li><strong>100% Reversible:</strong> I made sure all of these mods are completely non-destructive and fully reversible if I ever want to return the gauge to its stock form (the epoxy and nail don't get in the way).</li>
+              </ul>
+              <p>And I can report: <strong>It works remarkably well!</strong></p>
+              <p>I have ~2.1 mm of travel range from the floating/hovering point down to bottoming out, which is plenty of stroke even for my 7.25" radius Strat.</p>
+              <p>To fine-tune the offset/hovering-point across different guitars, I bought some copper shim washers that fit between the digital indicator gauge and the brass base block: <a href="https://www.top-industrieteile.de/Dichtungen/Flachdichtringe-DIN-7603/Kupfer-Flachdichtringe/Kupfer-Flachdichtung-65-x-95-x-1-mm/" target="_blank" rel="noopener noreferrer">Top Industrieteile Copper Washers</a> They actually measure exactly 0.8 mm ± 0.01 mm, not 1 mm, in thickness and could easily be filed to thinner sizes if needed. Two fit in there nicely while still leaving the set-screw on the brass base working.</p>
+
+              <h4>How My Workflow Works Now</h4>
+              <p>My workflow is to use (or omit) the copper washers so that when measuring the high <em>e</em> string, the string pushes the plunger at most <strong>0.1 mm to 0.3 mm above its floating/hovering point</strong>.</p>
+              <p>By keeping the plunger right near its neutral floating point on the high <em>e</em>, the net downward load on the string drops to under <strong>1.5g to 2.0g</strong>. At this tiny load, string deflection on the high <em>e</em> drops to a negligible <strong>~0.03 mm (~0.001")</strong>: visually rock-solid and well within "standard lutherie tolerances".</p>
+              <p>As you move up to thicker strings, the higher physical string profile moves the plunger further above its hovering point (~0.91 mm higher on a .046" wound <em>E</em> due to diameter alone, plus any gradual action progression). This decompresses the switch spring slightly and adds about 5g to 7g of net weight on the wound strings.</p>
+              <ul>
+                <li><strong>Theory vs. Real-World Practice:</strong> In "pure mechanical theory", the thick steel core wire of a wound string has exponentially higher flexural bending stiffness (EI ∝ d4), acting like a rigid beam that resists added load. However, in real-world testing, the Low <em>E</em> string still shows around <strong>~0.1 mm of deflection</strong>. This is easily explained by real-world factors: e.g. the pointed indicator tip compresses slightly into the softer outer wrap wire, and there is local coil compliance in wound strings that simple beam equations don't capture.</li>
+                <li><strong>Why it still kinda works in practice:</strong> As you move from plain to wound strings during a setup, you thoughtfully give thicker strings slightly more clearance anyway (e.g. 1.5 mm on high <em>e</em> vs 1.8 mm on low <em>E</em>) to accommodate their wider vibrational arc. Because you naturally set slightly higher action on thicker strings, this minor ~0.1 mm real-world deflection compensates itself on the go while doing the setup. You just have to keep it in mind.</li>
+              </ul>
+
+              <h4>Conclusion</h4>
+              <p>All in all, I'm quite happy with how this turned out and wanted to share my experience!</p>
+              <p>In the future, I might experiment with even longer, lighter springs (like 22 mm 30g/35g slow-curve keyboard springs) to flatten the spring force curve even further. But there's a limit: the spring can't be too long or soft, otherwise you lose the essential travel range needed when mounting the brass base.</p>
+              <p>What do you think about this setup? Do you have other ideas? Let me know!</p>
+
+              <h4>UPDATE</h4>
+              <p>..on the extra deflection issue: Remember, because the thicker wound strings (D, A, Low E) push the plunger significantly higher up, the Gateron Brown spring decompresses slightly but noticeably. Losing that bit of upward counter-push upwards dropped about +5.5g of net weight onto the Low E, for example (cf. above), causing an extra 0.10 mm of measured string sag: I verified this by comparing measurement results before and after placing a 0.95 mm dense piece of cardboard between the brass base and the fingerboard to simulate the height jump.</p>
+              <p><strong>The Fix:</strong> I surprisingly found out that a 3rd washer (~0.8 mm) actually fits inside/between the brass base and the gauge without blocking the brass base set-screw like I originally feared!</p>
+              <p>This makes a super easy 2-step workflow possible:</p>
+              <ul>
+                <li><strong>Plain Strings (e, B, G):</strong> 2 washers (standard setup). Target display reading: <strong>0.20 mm – 0.25 mm</strong> of decompression of the spring compared to the neutral hovering position of the plunger. String sag is basically zero (~0.00 mm on high e to &lt;0.02 mm on G).</li>
+                <li><strong>Wound Strings (D, A, Low E):</strong> Drop in the 3rd washer. This re-compresses the spring by 0.8 mm, restoring the upward counter-push / compression of the spring and/by canceling out the string height jump. Target display reading here: <strong>0.30 mm – 0.35 mm</strong> (of decompression of the spring compared to the neutral hovering position of the plunger).</li>
+              </ul>
+              <p>That 0.10 mm sag on the Low E immediately dropped down to an unnoticeable ~0.01 mm (along with D and A staying well within ~0.01 mm – 0.03 mm), making the gauge practically 1:1 accurate across all 6 strings. No need to buy specialized 22mm springs (considered these: <a href="https://monacokeys.de/en/products/kaidi-kos-switch-springs?variant=53290126442829" target="_blank" rel="noopener noreferrer">37g version</a>), just using the Gateron Brown spring from before and a 3rd spare washer did the trick!</p>
+              <p>Switching steps from plain to wound strings is definitely the sweet spot for 10–46 sets on my guitar's specific radius and fret height, but with tiny adjustments, this method will easily adapt to any guitar setup.</p>
+
+              <h4>UPDATE 2</h4>
+              <p><strong>A quick note on the original StewMac gauge vs. import units:</strong> Regarding the original StewMac unit for context; this one actually uses a much lighter plunger assembly out of the box, so it exerts very little downward force on the string. You can see this tested directly in Paul’s <em>Milehouse Studios</em> video (<em>"The Battle of the Depth Gauges"</em>), where he compares the lighter StewMac plunger to a heavier, standard digital indicator plunger starting at <a href="https://www.youtube.com/watch?v=TD-vIF7FrXQ&amp;t=1061s" target="_blank" rel="noopener noreferrer">17:41</a> (with the side-by-side string deflection test demonstrated from <a href="https://www.youtube.com/watch?v=TD-vIF7FrXQ&amp;t=1198s" target="_blank" rel="noopener noreferrer">19:58</a> to 20:15).</p>
+              <p>Also, DylanTalksTone has some videos where the deflection seems way less than what I experienced with the un-modded import gauge.</p>
+            </div>
+            <div class="external-post-footer">
+              <span>Originally published on Reddit.</span>
+              <a href="https://www.reddit.com/r/Luthier/comments/1vqxsi8/discussion_of_the_infamous_nut_slotting_gauge/" target="_blank" rel="noopener noreferrer">read original on Reddit ↗</a>
+            </div>
+          </article>
+        </div>
+        <div class="media-post" id="amp-post">
+          <div class="media-meta">
+            <span class="media-date">2026-09-11</span>
+          </div>
+          <figure class="media-post-image">
+            <img src="ampmod.jpeg" width="2400" height="454" loading="lazy" decoding="async" alt="Modified Vox AC15C1 amplifier control panel">
+          </figure>
+          <p class="media-text">
+            My only and favorite guitar amp, modded to perfectly suit myself. btw/fyi: yes, I misspelled sepArate on the amp's control panel - and that's ok. 
+          </p>
+          <article class="external-post reddit-post">
+            <div class="external-post-meta">
+            <span class="external-post-source">reddit</span>
+            <span>r/GuitarAmps</span>
+            <span>by u/_KJuns</span>
+              <span>originally posted: late 2025</span>
+            </div>
+            <h3 class="external-post-title">VOX AC15C1 (Revision ISS3c from presumably around 2012) Mods and Repairs/Upgrades</h3>
+            <div class="external-post-body">
+            <p>I love this amp. It's been my only amp for a very long time. I made it even better over the years and after doing quite some work recently on it again, I want to share my modding journey of this thing with y'all.</p>
+            <p>So here are the mods and repairs/upgrades I've done to this thing over the years till today:</p>
+
+            <h4>Input</h4>
+            <ul>
+              <li>Made the two channels "jumpable", but a bit different than how they did it in the CCs: I modified the Input-Board to don't short out the tip when nothing is connected to then use an S/DPDT switch to bridge the channels directly at the tip. This way both channels can be bridged with the significant other and all the caps, ferrites and stuff of both lanes are used; the old CCs basically bridged after the Input-Board and therefore ignored the components before that while also making the jumping-feature only available on the Top-Boost-Input. I also permanently attached the Sleeves of both Jacks to the Chassis-Ground and added a common ferrite I had spare to the cable from the Input-Board to the main-PCB.</li>
+              <li>I removed the series input resistor on the normal channel (R1) and of course shorted the two empty holes (0R); and changed the bright cap of the normal channel form 120pF to 94pF, while making it switchable (w/ SPDT). Reason: When using both channels I only want one bright cap in the circuit and the one in the Top Boost Channel sounds good and better than the Normal Channel one to begin with; while I still want the Normal's bright cap available for times I wanna use the Normal channel on it's own in lower volume settings (e.g. Jazz Duo). I just changed it to better quality caps and with a slightly lower value to get a slightly more subtle effect.</li>
+            </ul>
+            <h4>Reverb</h4>
+            <ul>
+              <li>Changed the stock tank (Belton BS3EB3C1B) to an Accutronics 8EB2C1B and then to a TAD 4EB2C1B.</li>
+              <li>Removed the "RCA-Chassis-Terminal" and wired a new and better quality, shielded RCA cable directly to the 3-Pin-PCB-Connectors.</li>
+              <li>Added a classic Tone Control (2nF+B50k) between the Tank-Return and the PCB.</li>
+              <li>Changed R24 (Pre-Gain / Dwell / Decay) from 820k to 330k+B500k. This resistor doesn't only change the Reverb in different ways it also has an effect on the overall Gain, Volume and Noise of the Amp even if the Reverb is turned off. Looking at the schematic makes this behavior pretty obvious and I'm happy with what can be manipulated this way / with this new pot.</li>
+            </ul>
+            <h4>Tone Stack</h4>
+            <ul>
+              <li>Changed the capacitors C20 and C24 to better quality ones with the same value: a "Double Sided Box Type Met Polypropylene Film Capacitor - JFQD" in C24 and a DME one in C20. I believe it made the highs a bit more "hifi".</li>
+              <li>Added a Mids Control: Changed R32 from 10k to B25k; and made that switchable (SPDT: stock (10k) or the new B25k).</li>
+            </ul>
+            <h4>Fixed Issues of Later Revisions</h4>
+            <ul>
+              <li>Grounded the second unused side of U5 (ISS6).</li>
+              <li>Added two caps to V1, presumably for noise-reduction purposes (ISS7).</li>
+            </ul>
+            <h4>Upgrades and Repairs</h4>
+            <ul>
+              <li>Changed the Screen Grid Resistors from 470R 1/2W to 1k 2W and elevated them from the PCB (cf. Lyle/Psionic).</li>
+              <li>Changed R90 and R91 from 220k 1/4W to 227k(3x680) 3/4W(3x1/4W) and also elevated them from the PCB (saw many of them burned in other units over the years).</li>
+              <li>Changed R79 (cathode bias resistor) from 120R 5W (cement-block-style) to 143R(7x1k) 14W(7x2W) (modern metal-oxide, the same as I used for the Screen Grid Resistors) (cf. Lyle/Psionic). Measurements before and after will follow: ... Lyle/Psionic recommended to me <a href="https://robrobinette.com/Tube_Bias_Calculator.htm" target="_blank" rel="noopener noreferrer">https://robrobinette.com/Tube_Bias_Calculator.htm</a> which I used to find out my plate dissipation per tube. I measured the cathode voltage (10.87VDC before, 12.30VDC after), plate voltage (330VDC before, 340VDC after), and the used resistor (120R before, 143R after) and got for the plate dissipation per tube: 13,7W before and 13,3W after (I have 230VAC wall voltage) The "cooling-down" is minimal but I hope at least somewhat beneficial. Lyle/Psionic recommends 12-14W (EL84s want to maximally see 12W, but overpowering them yields the classic Vox power tube distortion and chime and compression and all that, which is why it's essential for the tone to have more than 12W going - if I understand that correctly). Mine was obviously already under 14W, but I thought nearer at 13W or even below that would likely give me a chance to get a bit more longevity out of my EL84s, since they are way more expensive than years ago. What I perhaps do - don't know for sure yet - is just remove one of the seven 1k 2W, which would lead to 167R and would drop the bias even further and pretty surely under 13W, but still above 12W. I think about it and yeah... perhaps will do that. I used what I already had, which is why I chose 7 x 1k 2W instead of additionally ordering 150R 5W; but the good side effect is, that I can get values-in-between this way and by clipping one off I can easily step one step up w/o a bigger soldering/braiding work, which is cool. I don't want to talk about the minimal sound effect I notice by adjusting the bias here, sorry. DID IT: AS EXPECTED I LANDED AT ~167R AND AFTER MEASURING AND USING "ROB" AGAIN I GET 'ABOUT EXACTLY' 12W. TESTED IT FOR A FEW HOURS ALREADY AND IT SOUNDS PRETTY MUCH THE SAME (WAS A BIT "WORRIED" BECAUSE OF THE 12-14W RECOMMENDATION). AND THE TUBES SHOULD BE HAPPY NOW AND SHOULD LAST A LOT LONGER - I GUESS. I KEEP YOU UPDATED.</li>
+            </ul>
+            <h4>Miscellaneous</h4>
+            <ul>
+              <li>Changed the speaker cable from the Greenback to the speaker-PCB to a thick(er) one and soldered it on both sides (like the RCA cable: made a noticeable difference, believe it or not).</li>
+              <li>Added tube cages to V2 and V3 as well as dampeners to the power tubes.</li>
+              <li>For over 10 years I used the following tubes for this amp: "selected" or "gold pin 12AX7" ones for V1, a normal AX7 (JJ) for V2 and an old Sovtek LPS for V3; and matched JJ #7 EL84s for the power tubes. Recently I run a JJ -&gt; EH[since 08.01.26 - slightly smoother high end and a bit less noise in my case] "12AY7 V1" in V1, the old "gold pin 12AX7" in V2 and a normal JJ 12AT7 in V3; while in the power section I landed on matched EH EL84s for now.</li>
+              <li>Lead-Dressing.</li>
+            </ul>
+            <h4>Outside</h4>
+            <ul>
+              <li>Removed the "over 9000" machine and two wood screw from the back-plate; I now just use 3 machine-thumb-screws on critical positions (where the added shielding on the back-plate connects to the chassis for example), which makes working on the amp much easier.</li>
+              <li>Also added a handle where the specification-plate was to easily get this back-plate off, because it always glues itself tight with this dampening foam that is on the chassis.</li>
+              <li>Added a wooden beam-blocker, similar to the ones they had in the past.</li>
+              <li>The VOX Logo fell off years ago and I didn't replace it. It's on my wall now.</li>
+              <li>Removed one corner cap (front-right) to let my Captor X sit there nicely.</li>
+            </ul>
+            <h4>Future Plans</h4>
+            <ul>
+              <li>Try a physical Celestion Blue speaker in this amp, because I love the York Audio VX15 Celestion Blue IR I use daily with my Captor X on this amp. Celestion's official open back Greenback IR (and the 212 Vox one) I also own I don't dislike, but the Blue seems to suit me better - at least the York IR.</li>
+              <li><s>Change the Bias (R79: from 120 to 150 or something in between) to run the EL84s a bit cooler and therefore let them live a bit longer.</s></li>
+              <li>Change some more small parts for better reliability (higher wattage etc).</li>
+              <li>Change some stuff on the Tone Cut and Reverb Level pots I have in mind.</li>
+              <li>C32 : 100nF -&gt; 22nF perhaps? [Phase Inverter's "input cap"; change output cap then too? (100nF too)]</li>
+            </ul>
+            <p>If something is missing or comes to mind later, I will edit this post and add the missing bullet-point.</p>
+            </div>
+            <div class="external-post-footer">
+              <span>Originally published on Reddit.</span>
+              <a href="https://www.reddit.com/r/GuitarAmps/comments/1pebq7b/vox_ac15c1_revision_iss3c_from_presumably_around/" target="_blank" rel="noopener noreferrer">read original on Reddit ↗</a>
+            </div>
+          </article>
+        </div>
+        <!-- <div class="placeholder-card"> -->
+          <!-- content coming soon -->
+        <!-- </div> -->
+      </div>
+    </section>
+  </main>
+<!-- @footer -->
   <footer>
-    <span>built by hand &nbsp;·&nbsp; <a href="mailto:qlsen@gmx.net">say hello</a> AND/OR <a class="footer-paypal" href="https://paypal.me/qlsen" target="_blank" rel="noopener noreferrer">send a few €uros</a> via PayPal to support me ♥️ &nbsp;·&nbsp; @ 2026 <a class="footer-about" href="about.html">Julian'qns'Kopf</a></span>
+    <span>built by hand &nbsp;·&nbsp; <a href="mailto:qlsen@gmx.net">say hello</a> AND/OR <a class="footer-paypal" href="https://paypal.me/qlsen" target="_blank" rel="noopener noreferrer">send a few €uros</a> via PayPal to support me ♥️ &nbsp;·&nbsp; @ 2026 <a class="footer-about" href="about.html">Julian'qns'Kopf</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
   </footer>
-  <script src="section-loader.js?v=2"></script>
-  <script src="section-progress.js"></script>
+<!-- @/footer -->
+  <script src="section-progress.js?v=83421c5c"></script>
 </body>
 </html>

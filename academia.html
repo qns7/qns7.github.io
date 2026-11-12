@@ -4,21 +4,110 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Academia — (The) Qorner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Serif+Display:ital@0;1&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260914">
+  <meta name="description" content="Thesis work, mathematical notes, papers, or thoughts on pure mathematics in general.">
+  <link rel="canonical" href="https://qorner.fyi/academia.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="(The) Qorner">
+  <meta property="og:title" content="Academia — (The) Qorner">
+  <meta property="og:description" content="Thesis work, mathematical notes, papers, or thoughts on pure mathematics in general.">
+  <meta property="og:url" content="https://qorner.fyi/academia.html">
+  <meta property="og:image" content="https://qorner.fyi/og.png">
+<!-- @head -->
+  <link rel="icon" href="/favicon.ico" sizes="32x32">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/geist-mono-latin-500-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=ca2c491e">
+<!-- @/head -->
 </head>
-<body class="section-page academia-page" data-section="academia">
+<body class="section-page academia-page">
+<!-- @phoneblock -->
+  <div class="phone-block">
+    <p class="phone-block-quote"><em>FUCK phones!</em> Only available on “big screens”, not sorry.</p>
+    <div class="phone-block-author"><img class="phone-block-logo" src="logo-small.png" width="400" height="400" loading="lazy" alt="Q's logo"></div>
+  </div>
+<!-- @/phoneblock -->
+<!-- @nav -->
   <nav><ul class="nav-links">
     <li><a href="index.html">home</a></li><li><a href="room.html">room</a></li><li><a href="music.html">music</a></li><li><a href="words.html">words</a></li><li><a href="academia.html">academia</a></li><li><a href="ranournal.html">ranournal</a></li><li><a href="dispatches.html">dispatches_from_elsewhere</a></li>
   </ul></nav>
+<!-- @/nav -->
   <div class="section-progress" aria-hidden="true"><i></i></div>
-  <main></main>
+  <main>
+    <section id="academia">
+      <div class="container">
+        <h2 class="academia-title">
+          The Science of<br>
+          <span>Structures &amp; Patterns</span>
+        </h2>
+        <p class="academia-body">
+          Thesis work, mathematical notes, papers, or thoughts on pure mathematics in general.
+        </p>
+        <!-- <div class="cite-block">
+          <p>
+            Let Q be an indefinite irrational quadratic form in n ≥ 3 variables.
+            Then Q(Z<sup>n</sup>) is dense in ℝ.
+          </p>
+          <span class="cite-source">— Oppenheim Conjecture (Margulis, 1987)</span>
+        </div> -->
+        <div class="media-post" id="thesis-note">
+          <div class="media-meta">
+            <span class="media-date">2026-09-14</span>
+          </div>
+          <p class="media-text">
+            Note to myself: Consider sharing my master's thesis here on this website.
+          </p>
+        </div>
+              <div class="media-post" id="studying-note">
+          <div class="media-meta">
+            <span class="media-date">2026-08-24</span>
+          </div>
+          <p class="media-text">
+            Studying (pure mathematics) at university leads you to learn, how to learn/study <br> and/or do the l&aelig;tter "better". <br> You get to know yourself (in that regard) in great detail: Because everyone learns and consumes differently. <br> While doing that, you also learn how to ask better questions; because as one knows: <br> 
+            There are no answers really. There are just better questions. More nuanced, if you will. As well there are no clear truths or dogmatism, of course. <br> But I don't want to get political. <br>
+  What one learns while being at university, too, implicitly, is to <s>highten</s> heighten their threshold of frustration. To gain the <s>curage</s> courage to ask "dumb" questions and to lower one's ego. The (big) latter doesn't help (in) anything real or worthy your (life)time btw .. 
+          </p>
+        </div>
+        <div class="media-post" id="cv-post">
+          <div class="media-meta">
+            <span class="media-date">2026-06-04</span>
+          </div>
+          <p class="media-text">
+            This is the CV I use for my recent applications.
+          </p>
+        </div>
+        <div class="pdf-preview">
+          <div class="pdf-container">
+            <canvas id="pdfCanvas"></canvas>
+          </div>
+          <div class="pdf-controls">
+    <button id="pdfPrev" class="pdf-btn">← prev</button>
+    <span class="pdf-page-info">
+      page <span id="currentPage">1</span> of <span id="totalPages">?</span>
+    </span>
+    <button id="pdfNext" class="pdf-btn">next →</button>
+    <a href="cv_Q2-26.pdf" target="_blank" rel="noopener" class="pdf-btn pdf-btn-right">open ↗</a>
+  </div>
+        </div>
+
+        <!-- <div class="media-post">
+          <div class="media-meta">
+            <span class="media-date">2026-05-20</span>
+          </div>
+          <p class="media-text">
+            A note on the density of quadratic forms and their applications to number theory.
+          </p>
+        </div> -->
+      </div>
+    </section>
+  </main>
+<!-- @footer -->
   <footer>
-    <span>built by hand &nbsp;·&nbsp; <a href="mailto:qlsen@gmx.net">say hello</a> AND/OR <a class="footer-paypal" href="https://paypal.me/qlsen" target="_blank" rel="noopener noreferrer">send a few €uros</a> via PayPal to support me ♥️ &nbsp;·&nbsp; @ 2026 <a class="footer-about" href="about.html">Julian'qns'Kopf</a></span>
+    <span>built by hand &nbsp;·&nbsp; <a href="mailto:qlsen@gmx.net">say hello</a> AND/OR <a class="footer-paypal" href="https://paypal.me/qlsen" target="_blank" rel="noopener noreferrer">send a few €uros</a> via PayPal to support me ♥️ &nbsp;·&nbsp; @ 2026 <a class="footer-about" href="about.html">Julian'qns'Kopf</a> &nbsp;·&nbsp; <a href="datenschutz.html">Datenschutz</a></span>
   </footer>
-  <script src="section-loader.js?v=2"></script>
-  <script src="section-progress.js"></script>
+<!-- @/footer -->
+  <script src="section-progress.js?v=83421c5c"></script>
+  <script src="cv-viewer.js?v=38320336" defer></script>
 </body>
 </html>
