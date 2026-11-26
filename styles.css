@@ -487,13 +487,6 @@ section:last-child { border-bottom: none; }
   margin-bottom: 0;
 }
 
-section .room-body + .media-post,
-section .music-body + .media-post,
-section .academia-body + .media-post,
-section .music-body + .footnote + .media-post {
-  margin-top: 3rem;
-}
-
 section a {
   color: var(--green-text);
   text-decoration: underline;
@@ -702,13 +695,6 @@ section a:hover {
 }
 
 .media-post {
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.media-post + .media-post {
-  margin-top: 1.5rem;
-  margin-bottom: 0;
   padding-top: 1.5rem;
 }
 
@@ -892,18 +878,6 @@ section a:hover {
   margin-bottom: 0;
 }
 
-.entry-stub {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.entry-stub > .media-post:first-child,
-.dispatch-list > .media-post:first-child {
-  margin-top: 0;
-}
-
 .entry-row {
   display: flex;
   align-items: baseline;
@@ -952,12 +926,6 @@ section a:hover {
   font-style: italic;
   color: var(--ink);
   margin-bottom: 0;
-}
-
-.dispatch-list {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
 }
 
 /* ─── FOOTER ────────────────────────────────────────────────── */
